@@ -1,0 +1,161 @@
+.main {
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0;
+  color: white;
+}
+
+.title {
+  font-size: 45px;
+  text-align: center;
+  margin-bottom: 80px;
+  font-weight: 500;
+  width: 95%;
+}
+
+
+.containerForThree {
+  width: 90%;
+  display: flex;
+  gap: 40px;
+  height: 500px;
+    border: 0.5px solid rgb(245, 202, 161);
+    
+}
+
+.info {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.reviewContainer {
+  height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.review {
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.7;
+  color: white;
+  hyphens: auto;
+  text-align: justify;
+}
+
+.reviewContainer::-webkit-scrollbar {
+  width: 6px;
+}
+.reviewContainer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+.reviewContainer::-webkit-scrollbar-thumb {
+  background: rgb(245, 202, 161);
+  border-radius: 3px;
+}
+
+.pic {
+  width: 70%;
+  background-image: url(./pics/XXXL.webp);
+  background-size: cover;
+  background-position: left center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: right;
+  position: relative;
+}
+
+
+.containerForTwo {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.firstReview,
+.secondReview {
+  width: 48%;
+  height: 400px;
+  display: flex;
+  background: black;
+  border: 0.5px solid rgb(245, 202, 161);
+  overflow: hidden;
+}
+
+.firstText,
+.secondText {
+  width: 50%;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.smallName {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.smallReview {
+  font-size: 16px;
+  line-height: 1.6;
+  color: white;
+  font-weight: 300;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.picFirst,
+.picSecond {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.picFirst {
+  background-image: url(./pics/XXXL\ \(3\).webp);
+}
+
+.picSecond {
+  background-image: url(./pics/XXXL\ \(5\).webp);
+}
+.yandexButton {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(245, 202, 161, 0.6);
+  border-radius: 0; /* square corners */
+  transition: background 0.2s;
+  z-index: 2;
+}
+
+.yandexButton:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+}

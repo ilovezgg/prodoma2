@@ -1,0 +1,32 @@
+.main{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+    align-items: center;
+}
+.container{
+    width: 95%;
+    height: 700px;
+    display: flex;
+    justify-content: space-around;
+}
+.title{
+    width: 90%;
+    font-size: 50px;
+    padding-bottom: 60px;
+}
+.subtitle{
+    width: 90%;
+    font-size: 30px;
+    transform: translateY(-100%);
+}
+.first{
+    width: 46%;
+    height: 600px;
+}
+.second{
+    width: 46%;
+     height: 600px;
+}

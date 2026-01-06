@@ -1,0 +1,107 @@
+.main{
+    width: 100%;
+    height: 800px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 80px;
+}
+.title{
+    width: 90%;
+    font-size: 55px;
+    font-weight: 500;
+    color: white;
+    display: flex;  
+    justify-content: center;
+    text-align: center;
+     letter-spacing: 1.7px;
+}
+.container{
+    width: 90%;
+    height: 95%;
+    display: flex;
+    justify-content: space-around;
+    gap: 150px;
+}
+.first{
+    width: 33%;
+    height: 90%;
+    border-left: 2px solid rgb(245, 202, 161);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+}
+.second{
+    width: 33%;
+    height: 90%;
+    border-left: 2px solid rgb(245, 202, 161);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+}
+.third{
+    width: 33%;
+    height: 90%;
+    border-left: 2px solid rgb(245, 202, 161);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   padding: 10px 30px;
+    transition: all 0.3s ease;
+}
+.premTitle{
+    width: 100%;
+    color: white;
+    font-size: 25px;
+    letter-spacing: 1.7px;
+}
+.premText{
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1.7px;
+}
+.first:hover, .second:hover, .third:hover{
+    background-color: rgba(255,255,255,0.1);
+    transform: translateY(-5px);
+    border-left: 2px solid rgb(245, 202, 161);
+}
+.accent {
+  color: rgb(245, 202, 161);
+}
+.first, .second, .third {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease, background-color 0.3s ease, border 0.3s ease;
+}
+
+.first.animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s; 
+}
+
+.second.animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.third.animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.first.animate:hover,
+.second.animate:hover,
+.third.animate:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
