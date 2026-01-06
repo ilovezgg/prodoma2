@@ -19,24 +19,33 @@ export default async function handler(req, res) {
   }
 
   try {
+    const leadData = {
+      name: `Заявка от ${name}`,
+      price: 0,
+      _embedded: {
+        contacts: [{
+          first_name: name,
+          custom_fields_values: [
+            {
+              field_id: 1480715, // ID поля "Телефон"
+              values: [{ value: phone, enum_code: 'MOB' }] // или 'WORK'
+            },
+            {
+              field_id: 1480717, // ID поля "Email"
+              values: [{ value: '', enum_code: 'WORK' }] // можно оставить пустым
+            }
+          ]
+        }]
+      }
+    };
+
     const response = await fetch(`https://${subdomain}.amocrm.ru/api/v4/leads/complex`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify([{
-        name: `Заявка от ${name}`,
-        _embedded: {
-          contacts: [{
-            first_name: name,
-            custom_fields_values: [
-              { field_id: 3, values: [{ value: phone, enum_code: 'WORK' }] },
-              { field_id: 2, values: [{ value: '', enum_code: 'WORK' }] }
-            ]
-          }]
-        }
-      }])
+      body: JSON.stringify([leadData])
     });
 
     if (response.ok) {
