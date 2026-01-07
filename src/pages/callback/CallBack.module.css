@@ -1,6 +1,6 @@
 .main{
     width: 100%;
-    height: 650px;
+    height: 690px;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -14,21 +14,6 @@ background-image: url('/pics/nebol-soi-castnyi-dom-v-lesu-v-tuddal-gaustatoppen-
     background-position: center;
     display: flex;
     align-items: center;
-}
-.blackCube {
-  width: 35%;
-  height: 80%;
-  background: rgba(30, 30, 35, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transform: translateX(10%);
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
 .blackCube {
   width: 35%;
@@ -55,25 +40,25 @@ background-image: url('/pics/nebol-soi-castnyi-dom-v-lesu-v-tuddal-gaustatoppen-
   line-height: 1.4;
   color: #f0f0f0;
   text-align: left;
-
 }
 .name,
 .number {
-  width:80%;
+  width:85%;
   padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 5px;
-  color: #fff;
+  color: #ffffff;
   font-size: 16px;
   font-family: inherit;
   outline: none;
   transition: all 0.25s ease;
+  margin-bottom: 10px;
 }
 
 .name::placeholder,
 .number::placeholder {
-  color: rgba(240, 240, 240, 0.5);
+  color: rgba(255, 255, 255);
   opacity: 1;
 }
 
@@ -119,23 +104,24 @@ background-image: url('/pics/nebol-soi-castnyi-dom-v-lesu-v-tuddal-gaustatoppen-
 }
 
 .description {
-  width: 80%;
+  width: 85%;
   padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 5px;
   color: #fff;
   font-size: 16px;
   font-family: inherit;
   outline: none;
+   margin-bottom: 10px;
   resize: vertical;
-  min-height: 80px;
+  min-height: 140px;
   max-height: 140px;
   transition: all 0.25s ease;
 }
 
 .description::placeholder {
-  color: rgba(240, 240, 240, 0.5);
+ color: rgba(255, 255, 255);
   opacity: 1;
 }
 

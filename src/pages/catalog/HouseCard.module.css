@@ -7,11 +7,12 @@
   align-items: center;
   flex-direction: column;
   position: relative;
+  
 }
 .picContainer{
      position: relative;
   width: 100%;
-  height: 630px;
+  height: 610px;
 }
 .pic{
   width: 100%;
@@ -27,7 +28,7 @@
   color: white;
   width: 100%;
   text-align: center;
-   min-height: 160px;
+   min-height: 190px;
 }
 
 .name {
@@ -86,7 +87,7 @@
 .moreButton {
   position: absolute;
   bottom: -1px;
-  right: -0.5px;
+  right: -1px;
   width: 150px;
   height: 48px;
   background: rgb(0, 0, 0);
@@ -104,6 +105,7 @@
   border-top: 0.5px solid rgb(245, 202, 161);
   border-left: 0.5px solid rgb(245, 202, 161);
   box-sizing: border-box;
+  font-family: 'Unbounded';
 }
 
 .moreButton:hover {
