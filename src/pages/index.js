@@ -8,6 +8,7 @@ import Review from '../pages/review/Review';
 import Catalog from '../pages/catalog/Catalog';
 import CallBack from '../pages/callback/CallBack';
 import '../app/globals.css'
+import Footer from './footer/Footer';
 export default function HomePage() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Review />
       <Catalog />
       <CallBack />
+      <Footer/>
     </div>
   );
 }

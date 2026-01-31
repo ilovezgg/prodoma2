@@ -1,6 +1,6 @@
 import React from 'react'
 import z from './Main.module.css'
-import iconWood from './pics/Проверить ящики by iconSvg.co.svg'
+
 
 const Main = () => {
   return (
@@ -18,7 +18,7 @@ const Main = () => {
 <div className={z.subTitle}>
   <div className={z.element}>
     <div className={z.iconWood}>
-      <img src={iconWood} alt="Тепло" className={z.woodSvg} />
+     <img src="/pics/Проверить ящики by iconSvg.co.svg" alt="Тепло" className={z.woodSvg} />
     </div>
     <div className={z.textSubTitle}>
       Дома, где действительно тепло - проверяем тепловизором
@@ -27,7 +27,7 @@ const Main = () => {
 
   <div className={z.element}>
     <div className={z.iconWood}>
-      <img src={iconWood} alt="Сроки" className={z.woodSvg} />
+    <img src="/pics/Проверить ящики by iconSvg.co.svg" alt="Тепло" className={z.woodSvg} />
     </div>
     <div className={z.textSubTitle}>
       Соблюдаем сроки - сдаем объекты день в день
@@ -36,7 +36,7 @@ const Main = () => {
   
   <div className={z.element}>
     <div className={z.iconWood}>
-      <img src={iconWood} alt="Качество" className={z.woodSvg} />
+  <img src="/pics/Проверить ящики by iconSvg.co.svg" alt="Тепло" className={z.woodSvg} />
     </div>
     <div className={z.textSubTitle}>
       Качество, которое видно - не прячем работу под отделкой

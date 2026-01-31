@@ -1,6 +1,11 @@
-// CallBack.jsx
 import React, { useState } from 'react';
 import z from './CallBack.module.css';
+import dynamic from 'next/dynamic';
+
+const CustomMap = dynamic(() => import('../../components/map/CustomMap'), {
+  ssr: false,
+  loading: () => <div style={{ width: '100%', height: '400px' }}>Загрузка карты...</div>,
+});
 
 const CallBack = () => {
   const [name, setName] = useState('');
@@ -10,33 +15,33 @@ const CallBack = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  try {
-    const res = await fetch('/api/amo-send', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, phone, description }),
-    });
+    try {
+      const res = await fetch('/api/amo-send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, description }),
+      });
 
-    if (res.ok) {
-      setIsSuccess(true);
-      setName('');
-      setPhone('');
-      setDescription('');
-    } else {
-      const error = await res.json();
-      console.error('Ошибка API:', error);
-      alert('Ошибка отправки. Попробуйте позже.');
+      if (res.ok) {
+        setIsSuccess(true);
+        setName('');
+        setPhone('');
+        setDescription('');
+      } else {
+        const error = await res.json();
+        console.error('Ошибка API:', error);
+        alert('Ошибка отправки. Попробуйте позже.');
+      }
+    } catch (err) {
+      console.error('Сетевая ошибка:', err);
+      alert('Не удалось подключиться к серверу.');
     }
-  } catch (err) {
-    console.error('Сетевая ошибка:', err);
-    alert('Не удалось подключиться к серверу.');
-  }
 
-  setIsSubmitting(false);
-};
+    setIsSubmitting(false);
+  };
 
   if (isSuccess) {
     return (
@@ -48,6 +53,13 @@ const CallBack = () => {
               Мы свяжемся с вами в ближайшее время.
             </div>
           </div>
+        </div>
+        <div className={z.text}>
+          <span>prodoma</span>
+          <span className={z.pipe}></span>
+          <span>prodoma</span>
+          <span className={z.pipe}></span>
+          <span>prodoma</span>
         </div>
       </div>
     );
@@ -93,6 +105,27 @@ const CallBack = () => {
             </button>
           </form>
         </div>
+      </div>
+
+      {/* Секция карты */}
+      <div className={z.mapSection}>
+        <h1 className={z.titleTwo}>Мечтаете о доме в лесу?</h1>
+        
+        {/* Маркетинговый подзаголовок */}
+        <p className={z.mapSubtitle}>
+          Уже 142 семьи построили дом своей мечты с нами. Приходите — покажем проекты, рассчитаем бюджет и ответим на все вопросы.
+        </p>
+
+        <CustomMap />
+      </div>
+
+      {/* Нижний текст */}
+      <div className={z.text}>
+        <span>prodoma</span>
+        <span className={z.pipe}></span>
+        <span>prodoma</span>
+        <span className={z.pipe}></span>
+        <span>prodoma</span>
       </div>
     </div>
   );
