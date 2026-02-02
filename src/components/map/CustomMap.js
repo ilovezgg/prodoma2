@@ -47,10 +47,10 @@ export default function CustomMap() {
 }).addTo(map);
 
       const marker = L.marker([58.591947, 35.824912]);
-      marker.bindPopup(
-        '<div style="color:white;font-weight:500;font-family:sans-serif;">Офис компании Prodoma</div>',
-        { closeButton: false, autoClose: false }
-      );
+     marker.bindPopup(
+  '<div style="color:black; font-weight:300; font-family:\'Unbounded\', sans-serif; font-size:14px;">Офис компании Prodoma</div>',
+  { closeButton: false, autoClose: false }
+);
       marker.addTo(map);
       marker.openPopup();
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import z from './Header.module.css'
+import Link from 'next/link'
 const Header = () => {
   return (
     <div className={z.main}>
@@ -10,9 +11,7 @@ const Header = () => {
         
      </div>
      <div className={z.navigation}>
-        <div className={z.whyUs}>
-        Почему мы?
-        </div>
+     <Link href="/articles">Статьи</Link>
         <div className={z.chooseProject}>
          Подобрать проект
         </div>
