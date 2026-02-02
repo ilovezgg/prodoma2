@@ -16,7 +16,7 @@
   height: 80px; 
   font-size: 22px;
   font-family: "Unbounded", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   background: #f5caa1;
   color: #000;
   cursor: pointer;
@@ -39,6 +39,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  object-position: bottom;
 }
 .leftPart {
   width: 40%;
@@ -82,6 +83,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  object-position: bottom;
 }
 
 
