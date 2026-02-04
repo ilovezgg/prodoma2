@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect, useRef } from 'react';
@@ -7,59 +6,69 @@ import styles from './CustomMap.module.css';
 export default function CustomMap() {
   const mapRef = useRef(null);
   const mapInstance = useRef(null);
+  const leafletLoaded = useRef(false);
 
   useEffect(() => {
-    if (mapInstance.current) return;
+    // Защита от дублирования
+    if (mapInstance.current || typeof window === 'undefined') return;
+
+    let isMounted = true;
 
     const initMap = async () => {
-      const L = (await import('leaflet')).default;
-      await import('leaflet/dist/leaflet.css');
+      try {
+        // Динамический импорт — только при монтировании
+        const L = (await import('leaflet')).default;
+        await import('leaflet/dist/leaflet.css');
 
-      delete L.Icon.Default.prototype._getIconUrl;
-      L.Icon.Default.mergeOptions({
-        iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-      });
+        // Фикс иконок
+        delete L.Icon.Default.prototype._getIconUrl;
+        L.Icon.Default.mergeOptions({
+          iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+          iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+          shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+        });
 
-      const container = mapRef.current;
-      if (!container) return;
-      container.style.height = '400px';
-      container.style.width = '100%';
+        const container = mapRef.current;
+        if (!container || !isMounted) return;
 
-     const map = L.map(container, {
-  center: [58.591947, 35.824912],
-  zoom: 15,
-  minZoom: 10,
-  maxZoom:16, 
-  attributionControl: false,
-});
+        container.style.height = '400px';
+        container.style.width = '100%';
 
-  
-      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-  attribution: false,
-  maxZoom: 16,
+        const map = L.map(container, {
+          center: [58.591947, 35.824912],
+          zoom: 15,
+          minZoom: 10,
+          maxZoom: 16,
+          attributionControl: false,
+        });
 
-  updateWhenIdle: false,     
-  updateWhenZooming: true,   
-  keepBuffer: 2,             
-  maxNativeZoom: 16,     
-}).addTo(map);
+        L.tileLayer('https://tile.opentopomap.org/{z}/{x}/{y}.png', {
+          attribution: false,
+          maxZoom: 16,
+          updateWhenIdle: false,
+          updateWhenZooming: true,
+          keepBuffer: 2,
+          maxNativeZoom: 16,
+        }).addTo(map);
 
-      const marker = L.marker([58.591947, 35.824912]);
-     marker.bindPopup(
-  '<div style="color:black; font-weight:300; font-family:\'Unbounded\', sans-serif; font-size:14px;">Офис компании Prodoma</div>',
-  { closeButton: false, autoClose: false }
-);
-      marker.addTo(map);
-      marker.openPopup();
+        const marker = L.marker([58.591947, 35.824912]);
+        marker.bindPopup(
+          '<div style="color:black; font-weight:300; font-family:\'Unbounded\', sans-serif; font-size:14px;">Офис компании Prodoma</div>',
+          { closeButton: false, autoClose: false }
+        ).addTo(map);
+        marker.openPopup();
 
-      mapInstance.current = map;
+        mapInstance.current = map;
+
+      } catch (err) {
+        console.error('Ошибка загрузки карты:', err);
+      }
     };
 
     initMap();
 
     return () => {
+      isMounted = false;
       if (mapInstance.current) {
         mapInstance.current.remove();
         mapInstance.current = null;

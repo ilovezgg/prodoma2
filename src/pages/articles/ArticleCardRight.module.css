@@ -1,0 +1,114 @@
+.card{
+    width: 100%;
+    height: 700px;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.rightPart{
+   width: 60%;
+   height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.open {
+  width: auto;
+  min-width: 220px;
+  height: 80px; 
+  font-size: 22px;
+  font-family: "Unbounded", sans-serif;
+  font-weight: 400;
+  background: #f5caa1;
+  color: #000;
+  cursor: pointer;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+   outline: none;
+    appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none; 
+    margin-left: auto;
+}
+.open:hover {
+  background: #f7d2b9;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: bottom;
+}
+.leftPart {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start; 
+  padding: 20px 20px 40px; 
+  height: 100%;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  margin: 0 0 20px 0;
+  text-align: right;
+}
+
+.description {
+  line-height: 1.4;
+  font-size: 25px;
+  font-weight: 200;
+  letter-spacing: 1.5px;
+  margin: 0 0 32px 0;
+  text-align: right;
+}
+
+.slider {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.34, 0.72, 0.32, 0.98);
+}
+
+.slide {
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: bottom;
+}
+
+
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.dot.activeDot {
+  background: #f5caa1;
+}

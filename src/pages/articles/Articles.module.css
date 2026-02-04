@@ -10,4 +10,7 @@
 
 .first {
   width: 92%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
 }
