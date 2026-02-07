@@ -10,6 +10,7 @@
    height: 100%;
     position: relative;
     overflow: hidden;
+    border-right: 0.5px solid white;
 }
 .open {
   width: auto;
@@ -41,7 +42,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  object-position: bottom;
+  object-position: top;
 }
 .leftPart {
   width: 40%;

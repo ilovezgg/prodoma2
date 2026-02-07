@@ -16,11 +16,11 @@ export default function CustomMap() {
 
     const initMap = async () => {
       try {
-        // Динамический импорт — только при монтировании
+       
         const L = (await import('leaflet')).default;
         await import('leaflet/dist/leaflet.css');
 
-        // Фикс иконок
+      
         delete L.Icon.Default.prototype._getIconUrl;
         L.Icon.Default.mergeOptions({
           iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
