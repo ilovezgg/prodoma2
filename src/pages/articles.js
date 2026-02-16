@@ -7,9 +7,8 @@ import Articles from './articles/Articles';
 export default function ArticlesPage() {
   return (
     <>
-      <Header />
+
       <Articles />
-      <Footer />
     </>
   );
 }

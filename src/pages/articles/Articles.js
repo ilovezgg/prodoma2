@@ -12,6 +12,7 @@ const Articles = () => {
   image={[
     '/pics/les1.webp',
   ]}
+  href="/articles/forestHouse" 
 />
  <ArticleCardRight
   title="Как найти дом, в который вы влюбитесь с первого взгляда"
@@ -19,7 +20,7 @@ const Articles = () => {
   image={[
     '/pics/dom5.png',
   ]}
-  
+  href="/articles/forestHouse" 
 />
  <ArticleCardLeft
   title="Как выбрать участок под дом мечты: 7 ошибок, которые разрушат ваш бюджет"
@@ -27,6 +28,7 @@ const Articles = () => {
   image={[
     '/pics/water.png',
   ]}
+  href="/articles/chooseLand" 
 />
  <ArticleCardRight
   title="История барнхауса: от американских ферм до русского леса"
@@ -34,7 +36,7 @@ const Articles = () => {
   image={[
     '/pics/goida.png',
   ]}
-  
+  href="/articles/barnhouseHistory" 
 />
     </div>
     </div>

@@ -12,14 +12,14 @@ import Footer from './footer/Footer';
 export default function HomePage() {
   return (
     <div className="App">
-      <Header />
+
       <Main />
       <Smeta />
       <HowWeWork />
       <Review />
       <Catalog />
       <CallBack />
-      <Footer/>
+
     </div>
   );
 }
