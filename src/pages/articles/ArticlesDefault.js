@@ -2,7 +2,7 @@
 import React from 'react';
 import z from './ArticlesDefault.module.css';
 
-export default function ArticlesDefault({ title, description, image, blocks }) {
+export default function ArticlesDefault({ title, description, image, blocks = [] }) { // ← значение по умолчанию
 
   const heroImage = Array.isArray(image) ? image[0] : image;
 
@@ -11,7 +11,6 @@ export default function ArticlesDefault({ title, description, image, blocks }) {
       <h1 className={z.mainText}>{title}</h1>
       <p className={z.description}>{description}</p>
 
-    
       {heroImage && (
         <img 
           src={heroImage} 
@@ -21,27 +20,24 @@ export default function ArticlesDefault({ title, description, image, blocks }) {
         />
       )}
 
-<div className={z.articleContent}>
+      <div className={z.articleContent}>
+        {Array.isArray(blocks) && blocks.map((block, i) => { // ← дополнительная защита
+          if (block.image == null) {
+            return (
+              <div key={i} className={z.factBlock}>
+                <div dangerouslySetInnerHTML={{ __html: block.text }} />
+              </div>
+            );
+          }
 
-
-     {blocks.map((block, i) => {
-  if (block.image == null) {
-    // Только текст — центрируем, без изображения
-    return (
-      <div key={i} className={z.factBlock}>
-        <div dangerouslySetInnerHTML={{ __html: block.text }} />
+          return (
+            <div key={i} className={`${z.block} ${i % 2 === 0 ? z.imageRight : z.imageLeft}`}>
+              <img src={block.image} className={z.blockImage} loading="lazy" alt="" />
+              <div className={z.blockText} dangerouslySetInnerHTML={{ __html: block.text }} />
+            </div>
+          );
+        })}
       </div>
-    );
-  }
-
-  return (
-    <div key={i} className={`${z.block} ${i % 2 === 0 ? z.imageRight : z.imageLeft}`}>
-      <img src={block.image} className={z.blockImage} loading="lazy" alt="" />
-      <div className={z.blockText} dangerouslySetInnerHTML={{ __html: block.text }} />
-    </div>
-  );
-})}
-    </div>
     </div>
   );
 }
