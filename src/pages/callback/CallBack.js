@@ -119,7 +119,7 @@ const CallBack = () => {
         <CustomMap />
       </div>
 
-      {/* Нижний текст */}
+    
       <div className={z.text}>
         <span>prodoma</span>
         <span className={z.pipe}></span>

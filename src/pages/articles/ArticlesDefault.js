@@ -21,29 +21,27 @@ export default function ArticlesDefault({ title, description, image, blocks }) {
         />
       )}
 
+<div className={z.articleContent}>
 
-      {blocks && blocks.map((block, index) => {
-        const isEven = index % 2 === 0;
-        return (
-          <div
-            key={index}
-            className={`${z.block} ${
-              isEven ? z.imageRight : z.imageLeft
-            }`}
-          >
-            <img 
-              src={block.image} 
-              alt="" 
-              loading="lazy"
-              className={z.blockImage}
-            />
-           <div 
-  className={z.blockText}
-  dangerouslySetInnerHTML={{ __html: block.text }} 
-/>
-          </div>
-        );
-      })}
+
+     {blocks.map((block, i) => {
+  if (block.image == null) {
+    // Только текст — центрируем, без изображения
+    return (
+      <div key={i} className={z.factBlock}>
+        <div dangerouslySetInnerHTML={{ __html: block.text }} />
+      </div>
+    );
+  }
+
+  return (
+    <div key={i} className={`${z.block} ${i % 2 === 0 ? z.imageRight : z.imageLeft}`}>
+      <img src={block.image} className={z.blockImage} loading="lazy" alt="" />
+      <div className={z.blockText} dangerouslySetInnerHTML={{ __html: block.text }} />
+    </div>
+  );
+})}
+    </div>
     </div>
   );
 }
