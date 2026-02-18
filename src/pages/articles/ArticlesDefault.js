@@ -21,7 +21,7 @@ export default function ArticlesDefault({ title, description, image, blocks = []
       )}
 
       <div className={z.articleContent}>
-        {Array.isArray(blocks) && blocks.map((block, i) => { // ← дополнительная защита
+        {Array.isArray(blocks) && blocks.map((block, i) => { 
           if (block.image == null) {
             return (
               <div key={i} className={z.factBlock}>
