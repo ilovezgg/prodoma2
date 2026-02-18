@@ -20,7 +20,7 @@ const Articles = () => {
   image={[
     '/pics/dom5.png',
   ]}
-  href="/articles/forestHouse" 
+  href="/articles/chooseLand" 
 />
  <ArticleCardLeft
   title="Как выбрать участок под дом мечты: 7 ошибок, которые разрушат ваш бюджет"
