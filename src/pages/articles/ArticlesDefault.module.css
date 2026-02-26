@@ -19,6 +19,7 @@
     height: 500px;
     object-fit: cover;
     display: block;
+    border-radius: 8px;
 }
 .mainText{
     font-weight: 300;

@@ -1,15 +1,19 @@
 import React from 'react'
 import z from './Main.module.css'
-
-
+import HeroSlider from './mainSlider/Carousel'
+const slides = [
+  '/pics/main1.webp',
+  '/pics/main2.webp',
+  '/pics/main3.webp',
+];
 const Main = () => {
   return (
     <div className={z.main}>
-      <div className={z.pics}>
-        <div className={z.picOne}></div>
-        <div className={z.picTwo}></div>
+       <div className={z.pics}>
+        <HeroSlider slides={slides} />
       </div>
-      
+
+       
       <div className={z.title}>
         <div className={z.titleText}>
   Строим <span className={z.order}>дома мечты</span>, в которые хочется возвращаться

@@ -25,16 +25,12 @@ export default async function handler(req, res) {
       _embedded: {
         contacts: [{
           first_name: name,
-          custom_fields_values: [
-            {
-              field_id: 1480715, // ID поля "Телефон"
-              values: [{ value: phone, enum_code: 'MOB' }] // или 'WORK'
-            },
-            {
-              field_id: 1480717, // ID поля "Email"
-              values: [{ value: '', enum_code: 'WORK' }] // можно оставить пустым
-            }
-          ]
+        custom_fields_values: [
+  {
+    field_id: 1373781, 
+    values: [{ value: phone, enum_code: 'MOB' }]
+  }
+]
         }]
       }
     };
