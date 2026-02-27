@@ -130,5 +130,31 @@ const CallBack = () => {
     </div>
   );
 };
+if (isSuccess) {
+  return (
+    <div className={z.main}>
+      <div className={z.pic}>
+        <div className={z.blackCube} style={{ textAlign: 'center' }}>
+          <div className={z.title}>Спасибо!</div>
+          <div className={z.subtitle}>Мы свяжемся с вами в ближайшее время.</div>
+        </div>
+      </div>
+      <div className={z.mapSection}>
+        <h1 className={z.titleTwo}>Мечтаете о доме в лесу?</h1>
+        <p className={z.mapSubtitle}>
+          Уже 142 семьи построили дом своей мечты с нами. Приходите — покажем проекты, рассчитаем бюджет и ответим на все вопросы.
+        </p>
+        <CustomMap />
+      </div>
+      <div className={z.text}>
+        <span>prodoma</span>
+        <span className={z.pipe}></span>
+        <span>prodoma</span>
+        <span className={z.pipe}></span>
+        <span>prodoma</span>
+      </div>
+    </div>
+  );
+}
 
 export default CallBack;

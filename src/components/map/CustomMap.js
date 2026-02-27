@@ -42,14 +42,12 @@ export default function CustomMap() {
           attributionControl: false,
         });
 
-        L.tileLayer('https://tile.opentopomap.org/{z}/{x}/{y}.png', {
-          attribution: false,
-          maxZoom: 16,
-          updateWhenIdle: false,
-          updateWhenZooming: true,
-          keepBuffer: 2,
-          maxNativeZoom: 16,
-        }).addTo(map);
+       L.tileLayer('https://tile2.maps.2gis.com/tiles?x={x}&y={y}&z={z}&v=1', {
+  maxZoom: 18,
+  updateWhenIdle: false,
+  updateWhenZooming: true,
+  keepBuffer: 2,
+}).addTo(map);
 
         const marker = L.marker([58.591947, 35.824912]);
         marker.bindPopup(
