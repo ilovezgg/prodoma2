@@ -9,13 +9,13 @@
 }
 .pics{
     width: 45%;
-    height: 100%;
+    height: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 50px;
-    transform: translateY(-8%);
+    transform: translateY(-5%);
 }
 .titleText{
     transform: translateY(-50px);
@@ -55,32 +55,20 @@
     margin-top: 10px;
     text-align: left;
 }
-.picOne{
-    width: 70%;
-    height: 80%;
-    background-image: url(./pics/stock-photo-part-of-the-facade-of-a-wooden-house-in-modern-style-and-sun-rays-1145110241\ \(1\).jpeg);
-    background-size: cover;
-    background-position: center;
-    border: 0.5px solid rgb(245,202,161);
+.buttonsDesktop {
+
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  transform: translateY(94%);
+  flex-direction: column;
+  row-gap: 50px;
+  align-items: center;
+  font-weight: 300;
 }
-.picTwo{
- width: 70%;
-    height: 70%;
-    background-image: url(./pics/stock-photo-an-administrative-building-with-an-artificial-pond-in-a-pine-forest-the-building-is-a-pavilion-2236925385\ \(1\).jpeg);
-        background-size: cover;
-    transform: translateX(200px) translateY(-155px);
-        border: 0.5px solid rgb(245,202,161);
-}
-.buttons{
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: space-around;
-    transform: translateY(94%);
-    flex-direction: column;
-    row-gap: 50px;
-    align-items: center;
-    font-weight: 300;
+.buttonsMobile {
+  display: none;
 }
 .titleText{
 color: white;
@@ -140,4 +128,76 @@ color: white;
   width: 780px;
   display: flex;
   justify-content: center;
+}
+@media (max-width: 768px) {
+ .main {
+    flex-direction: column;
+    min-height: 60vh;
+    height: 80vh; 
+    padding: 20px 16px;
+    justify-content: space-around; 
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(/pics/main1.webp);
+    background-size: cover;
+  }
+
+  .pics {
+    display: none;
+  }
+
+  .title {
+    width: 100%;
+    height: auto;
+    transform: none;
+    align-items: flex-start;
+  }
+
+  .titleText {
+    font-size: 28px;
+    transform: none;
+    text-align: left;
+  }
+
+  .order {
+    font-size: 28px;
+  }
+
+  .subTitle {
+    width: 100%;
+    flex-direction: column;
+    transform: none;
+    gap: 12px;
+    margin-top: 16px;
+  }
+.woodSvg{
+   flex-shrink: 0;
+}
+   .element {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .textSubTitle {
+    font-size: 14px;
+     flex: 1;
+  }
+
+  .buttonsDesktop {
+    display: none;
+  }
+  .buttonsMobile {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    row-gap: 16px;
+    margin-top: auto;
+  }
+
+  .podr, .getProjects {
+    width: 100%;
+    height: auto;
+    font-size: 16px;
+    padding: 16px;
+  }
 }

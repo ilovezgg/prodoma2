@@ -105,3 +105,50 @@
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-5px);
 }
+@media(max-width:768px){
+  .main{
+    width: auto;
+     height: auto;
+     row-gap: 40px;
+  }
+  .title{
+    width: 100%;
+    font-size: 20px;
+   margin-top: 40px;
+  }
+  .container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap:40px;
+    align-items: center;
+  }
+  .first, .second, .third{
+     width: 99%;
+    height: 33%;
+    border-bottom: 1px solid rgb(245, 202, 161);
+    border-top: 1px solid rgb(245, 202, 161);
+    border-left: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+gap: 12px;
+  }
+  .premTitle{
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .premText{
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .first:hover, .second:hover, .third:hover{
+    border-left: none;
+    border-bottom: 2px solid rgb(245, 202, 161);
+     border-top: 2px solid rgb(245, 202, 161);
+    transform: translateY(-5px);
+  }
+}

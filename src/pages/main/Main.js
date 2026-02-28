@@ -8,18 +8,16 @@ const slides = [
 ];
 const Main = () => {
   return (
-    <div className={z.main}>
-       <div className={z.pics}>
-        <HeroSlider slides={slides} />
-      </div>
-
-       
-      <div className={z.title}>
-        <div className={z.titleText}>
-  Строим <span className={z.order}>дома мечты</span>, в которые хочется возвращаться
-</div>
-
-<div className={z.subTitle}>
+     <div className={z.main}>
+  <div className={z.pics}>
+    <HeroSlider slides={slides} />
+  </div>
+  
+  <div className={z.title}>
+    <div className={z.titleText}>
+      Строим <span className={z.order}>дома мечты</span>, в которые хочется возвращаться
+    </div>
+    <div className={z.subTitle}>
   <div className={z.element}>
     <div className={z.iconWood}>
      <img src="/pics/Проверить ящики by iconSvg.co.svg" alt="Тепло" className={z.woodSvg} />
@@ -48,16 +46,18 @@ const Main = () => {
   </div>
 </div>
 
-<div className={z.buttons}>
-  <div className={z.getProjects}>
-    🏡 Рассчитать стоимость моего дома
+    <div className={z.buttonsDesktop}>
+      <div className={z.getProjects}>🏡 Рассчитать стоимость моего дома</div>
+      <div className={z.podr}>📸 Смотреть построенные объекты</div>
+    </div>
   </div>
-  <div className={z.podr}>
-    📸 Смотреть построенные объекты
+
+
+  <div className={z.buttonsMobile}>
+    <div className={z.getProjects}>🏡 Рассчитать стоимость моего дома</div>
+    <div className={z.podr}>📸 Смотреть построенные объекты</div>
   </div>
 </div>
-      </div>
-    </div>
   )
 }
 

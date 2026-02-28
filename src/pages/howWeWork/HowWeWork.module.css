@@ -126,3 +126,67 @@
   background: rgba(245, 202, 161, 0.15);
   color: rgb(245, 202, 161);
 }
+@media (max-width: 768px) {
+  .main {
+    height: auto;
+    padding: 40px 16px;
+  }
+
+  .title {
+    font-size: 22px;
+    padding-bottom: 40px;
+  }
+
+  .container {
+    width: 100%;
+    gap: 24px;
+  }
+
+  .step {
+    flex-direction: column !important;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .step:nth-child(even) {
+    flex-direction: column !important;
+  }
+
+  .stepNumber {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+
+  .stepContent {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+
+  .step:nth-child(even) .stepContent {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .step:nth-child(even) .timeBadge {
+    justify-content: flex-start;
+  }
+
+  .titleCard {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .textCard {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .timeBadge {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
