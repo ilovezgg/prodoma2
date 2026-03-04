@@ -5,8 +5,11 @@ import HouseCard from './HouseCard';
 const Catalog = () => {
   return (
     <div className={z.main}>
-      <div className={z.title}>Выберите дом своей мечты</div>
+      <div>
+<div className={z.title}>Выберите дом своей мечты</div>
       <div className={z.subtitle}>Дома, построенные для жизни — не для галочки.</div>
+      </div>
+
       <div className={z.container}>
         <div className={z.first}>
           <HouseCard
@@ -30,7 +33,6 @@ const Catalog = () => {
         </div>
       </div>
 
-      {/* Остальные блоки — аналогично */}
       <div className={z.container}>
         <div className={z.first}>
           <HouseCard

@@ -92,3 +92,47 @@
   background: #4d4c4c;
   margin: 24px auto;
 }
+@media (max-width: 768px) {
+  .mainText {
+    font-size: 22px;
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  .description {
+    width: 90%;
+    height: auto;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .pic {
+    width: 95%;
+    height: 220px;
+  }
+
+  .block {
+    flex-direction: column !important;
+    width: 95%;
+    gap: 20px;
+  }
+
+  .blockImage {
+    width: 100%;
+  }
+
+  .blockText {
+    width: 100%;
+    font-size: 15px;
+    padding-top: 20px;
+  }
+
+  .blockText h2 {
+    font-size: 20px;
+  }
+
+  .factBlock {
+    font-size: 15px;
+    padding: 0 16px;
+  }
+}

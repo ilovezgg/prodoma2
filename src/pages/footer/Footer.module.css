@@ -174,3 +174,38 @@ width: 22%;
 .prodoma:hover::after{
   width: 97%;
 }
+@media (max-width: 768px) {
+  .main {
+    height: auto;
+    padding: 40px 16px;
+  }
+
+  .container, .containerTwo {
+    flex-direction: column;
+    gap: 20px;
+    transform: none;
+    padding-bottom: 30px;
+  }
+
+  .office, .phoneNumber, .socialMedia, .contacts {
+    width: 100%;
+    height: auto;
+    gap: 10px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .adress {
+    font-size: 16px;
+  }
+
+  .number {
+    font-size: 20px;
+  }
+
+  .media {
+    font-size: 16px;
+  }
+}

@@ -134,3 +134,36 @@
 .moreButton:focus-visible {
   outline: transparent;
 }
+@media (max-width: 768px) {
+  .picContainer {
+    height: 260px;
+  }
+  .name {
+    font-size: 20px;
+  }
+
+  .infoTwo {
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .info {
+    min-height: auto;
+    padding-bottom: 80px; 
+  }
+
+  .navButton {
+    width: 44px;
+    height: 44px;
+    font-size: 36px;
+  }
+.moreButton {
+    width: 100%;
+    left: 0;
+    right: 0;
+    border-bottom: 0.5px solid rgb(245, 202, 161);
+  }
+  .navButton + .navButton {
+    left: 43px;
+  }
+}
