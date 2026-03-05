@@ -47,15 +47,15 @@ const Main = () => {
 </div>
 
     <div className={z.buttonsDesktop}>
-      <div className={z.getProjects}>🏡 Рассчитать стоимость моего дома</div>
-      <div className={z.podr}>📸 Смотреть построенные объекты</div>
+      <div className={z.getProjects}> Рассчитать стоимость моего дома</div>
+      <div className={z.podr}> Смотреть построенные объекты</div>
     </div>
   </div>
 
 
   <div className={z.buttonsMobile}>
-    <div className={z.getProjects}>🏡 Рассчитать стоимость моего дома</div>
-    <div className={z.podr}>📸 Смотреть построенные объекты</div>
+    <div className={z.getProjects}> Рассчитать стоимость моего дома</div>
+    <div className={z.podr}> Смотреть построенные объекты</div>
   </div>
 </div>
   )

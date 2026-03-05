@@ -1,0 +1,200 @@
+.card {
+  width: 100%;
+  height: 500px;
+  border: 0.5px solid rgba(245, 202, 161, 0.3);
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  border-color: rgb(245, 202, 161);
+}
+
+.card:hover .img {
+  transform: scale(1.04);
+}
+
+.card:hover .readMore {
+  color: rgb(245, 202, 161);
+}
+
+.card:hover .arrow {
+  transform: translateX(6px);
+}
+
+.cardReverse {
+  flex-direction: row-reverse;
+}
+
+/* Текст */
+.textPart {
+  width: 40%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 36px 32px 36px;
+  border-right: 0.5px solid rgba(245, 202, 161, 0.3);
+  transition: border-color 0.3s ease;
+}
+
+.card:hover .textPart {
+  border-color: rgba(245, 202, 161, 0.6);
+}
+
+.cardReverse .textPart {
+  border-right: none;
+  border-left: 0.5px solid rgba(245, 202, 161, 0.3);
+  text-align: right;
+  align-items: flex-end;
+}
+
+.card:hover .cardReverse .textPart {
+  border-color: rgba(245, 202, 161, 0.6);
+}
+
+/* Мета */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.cardReverse .meta {
+  justify-content: flex-end;
+}
+
+.metaItem {
+  font-size: 11px;
+  color: rgba(245, 202, 161, 0.5);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.metaDot {
+  color: rgba(245, 202, 161, 0.3);
+  font-size: 11px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 400;
+  color: white;
+  letter-spacing: 0.02em;
+  margin: 0 0 16px;
+  line-height: 1.35;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  margin: 0;
+  flex: 1;
+}
+
+.readMore {
+  margin-top: 32px;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardReverse .readMore {
+  justify-content: flex-end;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+/* Фото */
+.imagePart {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.15),
+    transparent
+  );
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.card:hover .imageOverlay {
+  opacity: 0.5;
+}
+
+/* Мобильная */
+@media (max-width: 768px) {
+  .card,
+  .cardReverse {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .textPart {
+    width: 100%;
+    padding: 24px 20px;
+    border-right: none;
+    border-bottom: 0.5px solid rgba(245, 202, 161, 0.2);
+  }
+
+  .cardReverse .textPart {
+    border-left: none;
+    border-bottom: 0.5px solid rgba(245, 202, 161, 0.2);
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .cardReverse .meta {
+    justify-content: flex-start;
+  }
+
+  .cardReverse .readMore {
+    justify-content: flex-start;
+  }
+
+  .imagePart {
+    width: 100%;
+    height: 240px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+}

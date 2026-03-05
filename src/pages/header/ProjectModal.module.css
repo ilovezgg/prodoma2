@@ -86,7 +86,7 @@
   letter-spacing: 0.02em;
 }
 
-/* Карточки выбора */
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -120,7 +120,7 @@
 }
 .cardIcon { font-size: 22px; }
 
-/* Результаты */
+
 .results {
   display: flex;
   flex-direction: column;
@@ -182,7 +182,7 @@
 }
 .nextBtn:hover { background: white; color: black; }
 
-/* Контактная форма */
+
 .contactForm {
   display: flex;
   flex-direction: column;
@@ -234,7 +234,7 @@
 }
 .back:hover { color: rgb(245, 202, 161); }
 
-/* Успех */
+
 .success {
   display: flex;
   flex-direction: column;

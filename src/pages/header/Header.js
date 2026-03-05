@@ -21,8 +21,8 @@ const Header = () => {
         <div className={z.navigation}>
           <Link className={z.navLink} href="/articles">Статьи</Link>
           <div className={z.navLink} onClick={() => setModalOpen(true)}>Подобрать проект</div>
-          <div className={z.navLink}>Отзывы</div>
-          <div className={z.navLink}>Контакты</div>
+           <Link className={z.navLink} href="/pageReviews">Отзывы</Link>
+          <Link className={z.navLink} href="/contacts">Контакты</Link>
         </div>
 
         <button className={z.burger} onClick={() => setMenuOpen(!menuOpen)}>
@@ -33,8 +33,8 @@ const Header = () => {
           <div className={z.mobileMenu}>
             <Link className={z.mobileLink} href="/articles" onClick={() => setMenuOpen(false)}>Статьи</Link>
             <div className={z.mobileLink} onClick={() => { setMenuOpen(false); setModalOpen(true); }}>Подобрать проект</div>
-            <div className={z.mobileLink} onClick={() => setMenuOpen(false)}>Отзывы</div>
-            <div className={z.mobileLink} onClick={() => setMenuOpen(false)}>Контакты</div>
+            <Link className={z.mobileLink} href="/pageReviews">Отзывы</Link>
+            <Link className={z.mobileLink} href="/contacts">Контакты</Link>
           </div>
         )}
       </div>

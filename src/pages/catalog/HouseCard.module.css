@@ -84,7 +84,7 @@
   cursor: pointer;
   display: flex;
   outline: none;
-  font-size: 50px;
+  font-size: 60px;
   align-items: center;
   justify-content: center;
   border-radius: 0; 
@@ -104,12 +104,12 @@
   position: absolute;
   bottom: -1px;
   right: -1px;
-  width: 150px;
-  height: 48px;
+  width: 220px;
+  height: 58px;
   background: rgb(0, 0, 0);
   color: white;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 16px;
   cursor: pointer;
   display: flex;
   align-items: center;

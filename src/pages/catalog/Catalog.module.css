@@ -16,14 +16,20 @@
 .title{
     width: 90%;
     font-size: 50px;
-    padding-bottom: 60px;
+    padding-bottom: 20px;
     font-weight: 300;
 }
 .subtitle{
     width: 90%;
     font-size: 30px;
-    transform: translateY(-100%);
     font-weight: 200;
+}
+.textBlock {
+    width: 95%;
+    padding: 20px 0;
+    transform: translateX(2%) translateY(-20%);
+    gap: 20px;
+    
 }
 .first{
     width: 46%;
