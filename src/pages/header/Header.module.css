@@ -1,51 +1,3 @@
-.main{
-    width: 100%;
-    height: 80px;
-    background-color: black;
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 0.5px solid rgb(245,202,161);
-      z-index: 10;
-}
-.logo{
-    width: 10%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.logoPic{
-    width: 100%;
-    height: 80%;
-    background-image: url(./pic/logo.png);
-    background-size: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-.navigation{
-    width: 55%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.whyUs, .contacts, .chooseProject, .reviews{
-    width: 20%;
-    height: 50%;
-    color: white;
-    background-color: transparent;
-    border: 0.5px solid rgb(245,202,161);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    font-weight: 300;
-}
-.whyUs:hover, .contacts:hover, .chooseProject:hover, .reviews:hover{
-    background-color: white;
-    color: black;
-}
 .main {
   width: 100%;
   height: 80px;
@@ -66,15 +18,6 @@
   align-items: center;
 }
 
-.logoPic {
-  width: 100%;
-  height: 80%;
-  background-image: url(./pic/logo.png);
-  background-size: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
 .navigation {
   width: 55%;
   height: 100%;
@@ -83,8 +26,8 @@
   align-items: center;
 }
 
-.whyUs, .contacts, .chooseProject, .reviews {
-  width: 20%;
+.navLink {
+  width: 22%;
   height: 50%;
   color: white;
   background-color: transparent;
@@ -96,9 +39,11 @@
   cursor: pointer;
   font-weight: 300;
   text-decoration: none;
+  font-size: 14px;
+  text-align: center;
 }
 
-.whyUs:hover, .contacts:hover, .chooseProject:hover, .reviews:hover {
+.navLink:hover {
   background-color: white;
   color: black;
 }
@@ -114,22 +59,17 @@
   padding: 8px;
 }
 
-/* Мобильное меню — скрыто на десктопе */
-.mobileMenu {
-  display: none;
-}
-
 @media (max-width: 768px) {
   .navigation {
     display: none;
   }
 
-  .burger {
-    display: block;
-  }
-
   .logo {
     width: 40%;
+  }
+
+  .burger {
+    display: block;
   }
 
   .mobileMenu {
@@ -154,7 +94,9 @@
     border-bottom: 0.5px solid rgba(245, 202, 161, 0.2);
     cursor: pointer;
     text-decoration: none;
+    box-sizing: border-box;
     transition: background 0.2s ease;
+    display: block;
   }
 
   .mobileLink:hover {

@@ -4,14 +4,13 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Метод не разрешён' });
   }
 
-  const { name, phone, description } = req.body;
-
+  const { name, phone, description, pipeline_id } = req.body;
   if (!name || !phone) {
     return res.status(400).json({ error: 'Имя и телефон обязательны' });
   }
 
   const accessToken = process.env.AMO_ACCESS_TOKEN;
-  const subdomain = process.env.AMO_SUBDOMAIN || 'stepanovdanya2006';
+  const subdomain = process.env.AMO_SUBDOMAIN || 'inmyhands333';
 
   if (!accessToken) {
     console.error('AMO_ACCESS_TOKEN не задан в Environment Variables');
@@ -19,21 +18,34 @@ export default async function handler(req, res) {
   }
 
   try {
+    const leadName = pipeline_id === 10642434
+      ? `Квиз: подбор проекта — ${name}`
+      : `Заявка с сайта — ${name}`;
+
     const leadData = {
-      name: `Заявка от ${name}`,
+      name: leadName,
       price: 0,
+   
+      ...(pipeline_id && { pipeline_id }),
       _embedded: {
         contacts: [{
           first_name: name,
-        custom_fields_values: [
-  {
-    field_id: 1373781, 
-    values: [{ value: phone, enum_code: 'MOB' }]
-  }
-]
-        }]
-      }
+          custom_fields_values: [
+            {
+              field_id: 1373781,
+              values: [{ value: phone, enum_code: 'MOB' }],
+            },
+          ],
+        }],
+      },
     };
+
+    if (description) {
+      leadData._embedded.notes = [{
+        note_type: 'common',
+        params: { text: description },
+      }];
+    }
 
     const response = await fetch(`https://${subdomain}.amocrm.ru/api/v4/leads/complex`, {
       method: 'POST',
@@ -41,7 +53,7 @@ export default async function handler(req, res) {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify([leadData])
+      body: JSON.stringify([leadData]),
     });
 
     if (response.ok) {
