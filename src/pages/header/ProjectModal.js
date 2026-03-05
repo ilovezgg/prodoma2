@@ -201,7 +201,7 @@ const ProjectModal = ({ isOpen, onClose }) => {
 
             <div className={`${z.content} ${animating ? z.fadeOut : z.fadeIn}`}>
 
-              {/* Вопросы */}
+             
               {!isResultStep && !isContactStep && (
                 <>
                   <h2 className={z.question}>{STEPS[step].question}</h2>

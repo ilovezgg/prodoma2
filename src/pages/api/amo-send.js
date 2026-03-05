@@ -17,7 +17,13 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Ошибка конфигурации' });
   }
 
+  const headers = {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json',
+  };
+
   try {
+    // 1. Создаём сделку с контактом
     const leadName = pipeline_id === 10642434
       ? `Квиз: подбор проекта — ${name}`
       : `Заявка с сайта — ${name}`;
@@ -25,7 +31,6 @@ export default async function handler(req, res) {
     const leadData = {
       name: leadName,
       price: 0,
-   
       ...(pipeline_id && { pipeline_id }),
       _embedded: {
         contacts: [{
@@ -40,29 +45,39 @@ export default async function handler(req, res) {
       },
     };
 
-    if (description) {
-      leadData._embedded.notes = [{
-        note_type: 'common',
-        params: { text: description },
-      }];
-    }
-
-    const response = await fetch(`https://${subdomain}.amocrm.ru/api/v4/leads/complex`, {
+    const leadRes = await fetch(`https://${subdomain}.amocrm.ru/api/v4/leads/complex`, {
       method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Content-Type': 'application/json',
-      },
+      headers,
       body: JSON.stringify([leadData]),
     });
 
-    if (response.ok) {
-      return res.status(200).json({ success: true });
-    } else {
-      const error = await response.json().catch(() => ({}));
-      console.error('AmoCRM API error:', error);
-      return res.status(500).json({ error: 'Ошибка AmoCRM' });
+    if (!leadRes.ok) {
+      const error = await leadRes.json().catch(() => ({}));
+      console.error('AmoCRM leads error:', error);
+      return res.status(500).json({ error: 'Ошибка создания сделки' });
     }
+
+    const leadJson = await leadRes.json();
+    const leadId = leadJson?.[0]?.id;
+
+    // 2. Добавляем примечание отдельным запросом
+    if (leadId && description) {
+      const noteRes = await fetch(`https://${subdomain}.amocrm.ru/api/v4/leads/${leadId}/notes`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify([{
+          note_type: 'common',
+          params: { text: description },
+        }]),
+      });
+      if (!noteRes.ok) {
+        const noteErr = await noteRes.json().catch(() => ({}));
+        console.error('AmoCRM note error:', noteErr);
+      }
+    }
+
+    return res.status(200).json({ success: true });
+
   } catch (err) {
     console.error('Network error:', err);
     return res.status(500).json({ error: 'Ошибка сети' });
