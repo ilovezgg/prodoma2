@@ -205,12 +205,14 @@
 @media (max-width: 1800px) {
   .mainText {
     font-size: 32px;
+    color: white;
   }
 
   .description {
     width: 50%;
     height: auto;
     font-size: 15px;
+    color: white;
   }
 
   .pic {

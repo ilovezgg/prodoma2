@@ -122,10 +122,12 @@
 @media (max-width: 1800px) {
   .title {
     font-size: 32px;
+    color: white;
   }
 
   .subtitle {
     font-size: 18px;
+    color: white;
   }
 
   .textBlock {
