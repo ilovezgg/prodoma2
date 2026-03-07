@@ -20,7 +20,7 @@ const HOUSES = [
   { id: 115, price: 6130000, area: 142, floors: 1, bedrooms: 3, tags: ['couple', 'elderly', 'dacha'] },
 ];
 
-
+// Если бюджет > 7 млн ИЛИ площадь > 200 м² — предлагаем индивидуальный проект
 function isIndividual(answers) {
   const budgetOver7m = answers.budget === 'b5';
   const areaOver200 = answers.area === 'xxlarge';
@@ -39,7 +39,8 @@ function matchHouses(answers) {
     const budgetMatch = h.price <= budgetMax;
     const areaMatch = h.area >= areaRange[0] && h.area <= areaRange[1];
     const floorMatch = who === 'elderly' ? h.floors === 1 : true;
-    return tagMatch && budgetMatch && areaMatch && floorMatch;
+    const bedroomMatch = who === 'family' ? h.bedrooms >= 2 : true;
+    return tagMatch && budgetMatch && areaMatch && floorMatch && bedroomMatch;
   });
 
   if (matched.length === 0) {
@@ -47,7 +48,8 @@ function matchHouses(answers) {
       const budgetMatch = h.price <= budgetMax;
       const tagMatch = wantedTags.length === 0 || h.tags.some((t) => wantedTags.includes(t));
       const floorMatch = who === 'elderly' ? h.floors === 1 : true;
-      return budgetMatch && tagMatch && floorMatch;
+      const bedroomMatch = who === 'family' ? h.bedrooms >= 2 : true;
+      return budgetMatch && tagMatch && floorMatch && bedroomMatch;
     });
   }
 
@@ -57,7 +59,10 @@ function matchHouses(answers) {
 function getReason(house, answers) {
   const { who } = answers;
   const reasons = [];
-  if (who === 'family') reasons.push(`${house.bedrooms} спальни — достаточно места для всей семьи`);
+  if (who === 'family') {
+    if (house.bedrooms >= 3) reasons.push(`${house.bedrooms} спальни — просторно для всей семьи`);
+    else reasons.push('2 спальни — уютно для семьи с детьми');
+  }
   else if (who === 'couple') reasons.push('компактный и уютный дом для двоих');
   else if (who === 'elderly') reasons.push('одноэтажный — не нужно подниматься по лестнице');
   else if (who === 'dacha') reasons.push('отличный вариант для загородного отдыха');
@@ -140,6 +145,7 @@ const ProjectModal = ({ isOpen, onClose }) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [animating, setAnimating] = useState(false);
+  const [errors, setErrors] = useState({ name: '', phone: '' });
 
   const TOTAL = STEPS.length + 2;
 
@@ -179,8 +185,69 @@ const ProjectModal = ({ isOpen, onClose }) => {
     setTimeout(() => { setStep((s) => s + 1); setAnimating(false); }, 260);
   };
 
+  const validateName = (val) => {
+    if (!val.trim()) return 'Введите имя';
+    if (!/^[а-яёА-ЯЁ\s\-]+$/.test(val.trim())) return 'Только кириллица';
+    return '';
+  };
+
+  const validatePhone = (val) => {
+    const digits = val.replace(/\D/g, '');
+    if (digits.length < 11) return 'Введите все цифры номера';
+    return '';
+  };
+
+  const handleNameChange = (e) => {
+    const val = e.target.value;
+    // Разрешаем вводить только кириллицу, пробелы и дефис
+    if (val === '' || /^[а-яёА-ЯЁ\s\-]*$/.test(val)) {
+      setContact((p) => ({ ...p, name: val }));
+      setErrors((p) => ({ ...p, name: '' }));
+    }
+  };
+
+  const formatPhone = (val) => {
+    let digits = val.replace(/\D/g, '');
+    // Убираем код страны если есть
+    if (digits.startsWith('8') || digits.startsWith('7')) digits = digits.slice(1);
+    // Ограничиваем 10 цифрами
+    digits = digits.slice(0, 10);
+    // Всегда строим с +7
+    let result = '+7';
+    if (digits.length > 0) result += ' (' + digits.slice(0, 3);
+    if (digits.length >= 3) result += ') ' + digits.slice(3, 6);
+    if (digits.length >= 6) result += '-' + digits.slice(6, 8);
+    if (digits.length >= 8) result += '-' + digits.slice(8, 10);
+    return result;
+  };
+
+  const handlePhoneChange = (e) => {
+    const formatted = formatPhone(e.target.value);
+    setContact((p) => ({ ...p, phone: formatted }));
+    setErrors((p) => ({ ...p, phone: '' }));
+  };
+
+  const handlePhoneFocus = () => {
+    if (!contact.phone) {
+      setContact((p) => ({ ...p, phone: '+7 (' }));
+    }
+  };
+
+  const handlePhoneKeyDown = (e) => {
+    const val = contact.phone;
+    // Не даём стереть префикс +7
+    if ((e.key === 'Backspace' || e.key === 'Delete') && val.length <= 4) {
+      e.preventDefault();
+    }
+  };
+
   const handleSubmit = async () => {
-    if (!contact.name || !contact.phone) return;
+    const nameErr = validateName(contact.name);
+    const phoneErr = validatePhone(contact.phone);
+    if (nameErr || phoneErr) {
+      setErrors({ name: nameErr, phone: phoneErr });
+      return;
+    }
     setLoading(true);
     await sendToAmo({ name: contact.name, phone: contact.phone, answers, houses: results, individual });
     setLoading(false);
@@ -201,7 +268,7 @@ const ProjectModal = ({ isOpen, onClose }) => {
 
             <div className={`${z.content} ${animating ? z.fadeOut : z.fadeIn}`}>
 
-             
+              {/* Вопросы */}
               {!isResultStep && !isContactStep && (
                 <>
                   <h2 className={z.question}>{STEPS[step].question}</h2>
@@ -220,7 +287,7 @@ const ProjectModal = ({ isOpen, onClose }) => {
                 </>
               )}
 
-              
+              {/* Результаты — индивидуальный проект */}
               {isResultStep && individual && (
                 <div className={z.individualBlock}>
                   <div className={z.individualIcon}>◈</div>
@@ -242,7 +309,7 @@ const ProjectModal = ({ isOpen, onClose }) => {
                 </div>
               )}
 
-             
+              {/* Результаты — стандартные дома */}
               {isResultStep && !individual && (
                 <>
                   <h2 className={z.question}>
@@ -270,7 +337,7 @@ const ProjectModal = ({ isOpen, onClose }) => {
                 </>
               )}
 
-            
+              {/* Контакты */}
               {isContactStep && (
                 <>
                   <h2 className={z.question}>
@@ -279,20 +346,29 @@ const ProjectModal = ({ isOpen, onClose }) => {
                       : 'Оставьте контакты — менеджер свяжется с вами'}
                   </h2>
                   <div className={z.contactForm}>
-                    <input
-                      className={z.input}
-                      type="text"
-                      placeholder="Ваше имя"
-                      value={contact.name}
-                      onChange={(e) => setContact((p) => ({ ...p, name: e.target.value }))}
-                    />
-                    <input
-                      className={z.input}
-                      type="tel"
-                      placeholder="Номер телефона"
-                      value={contact.phone}
-                      onChange={(e) => setContact((p) => ({ ...p, phone: e.target.value }))}
-                    />
+                    <div className={z.fieldWrap}>
+                      <input
+                        className={`${z.input} ${errors.name ? z.inputError : ''}`}
+                        type="text"
+                        placeholder="Ваше имя (кириллица)"
+                        value={contact.name}
+                        onChange={handleNameChange}
+                      />
+                      {errors.name && <div className={z.errorMsg}>{errors.name}</div>}
+                    </div>
+                    <div className={z.fieldWrap}>
+                      <input
+                        className={`${z.input} ${errors.phone ? z.inputError : ''}`}
+                        type="tel"
+                        placeholder="+7 (000) 000-00-00"
+                        value={contact.phone}
+                        onChange={handlePhoneChange}
+                        onFocus={handlePhoneFocus}
+                        onKeyDown={handlePhoneKeyDown}
+                        maxLength={18}
+                      />
+                      {errors.phone && <div className={z.errorMsg}>{errors.phone}</div>}
+                    </div>
                     <button
                       className={z.submitBtn}
                       onClick={handleSubmit}

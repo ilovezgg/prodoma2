@@ -57,7 +57,7 @@
   font-weight: 200;
   font-size: 22px;
   line-height: 1.6;
-  letter-spacing: 1.2px;
+  letter-spacing: 1.4px;
   font-family: 'Unbounded', sans-serif;
   color: white;
 }
@@ -75,6 +75,9 @@
   font-size: 28px;
   margin-bottom: 20px;
   letter-spacing: 1.3px;
+  border-left: 3px solid rgb(245, 202, 161);
+  padding-left: 16px;
+  color: white;
 }
 
 .factBlock {

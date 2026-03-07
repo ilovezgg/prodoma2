@@ -32,7 +32,7 @@ export default function CustomMap() {
         if (!container || !isMounted) return;
 
         container.style.height = '400px';
-        container.style.width = '100%';
+        container.style.width = '92%';
 
         const map = L.map(container, {
           center: [58.591947, 35.824912],

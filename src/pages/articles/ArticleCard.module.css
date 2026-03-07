@@ -1,7 +1,7 @@
 .card {
   width: 100%;
   height: 500px;
-  border: 0.5px solid rgba(245, 202, 161, 0.3);
+  border: 0.5px solid rgba(245, 202, 161);
   display: flex;
   flex-direction: row;
   text-decoration: none;
@@ -30,7 +30,7 @@
   flex-direction: row-reverse;
 }
 
-/* Текст */
+
 .textPart {
   width: 40%;
   flex-shrink: 0;
@@ -38,17 +38,17 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 36px 32px 36px;
-  border-right: 0.5px solid rgba(245, 202, 161, 0.3);
+  border-right: 0.5px solid rgba(245, 202, 161);
   transition: border-color 0.3s ease;
 }
 
 .card:hover .textPart {
-  border-color: rgba(245, 202, 161, 0.6);
+  border-color: rgba(245, 202, 161);
 }
 
 .cardReverse .textPart {
   border-right: none;
-  border-left: 0.5px solid rgba(245, 202, 161, 0.3);
+  border-left: 0.5px solid rgba(245, 202, 161);
   text-align: right;
   align-items: flex-end;
 }
@@ -57,7 +57,7 @@
   border-color: rgba(245, 202, 161, 0.6);
 }
 
-/* Мета */
+
 .meta {
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@
 
 .metaItem {
   font-size: 11px;
-  color: rgba(245, 202, 161, 0.5);
+  color: rgba(245, 202, 161);
   font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -123,7 +123,7 @@
   transition: transform 0.2s ease;
 }
 
-/* Фото */
+
 .imagePart {
   flex: 1;
   position: relative;
@@ -155,7 +155,7 @@
   opacity: 0.5;
 }
 
-/* Мобильная */
+
 @media (max-width: 768px) {
   .card,
   .cardReverse {

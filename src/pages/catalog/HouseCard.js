@@ -1,20 +1,13 @@
 // src/components/HouseCard.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import z from './HouseCard.module.css';
-
-const HouseCard = ({ 
-  images, 
-  name, 
-  price, 
-  totalArea, 
-  floors, 
-  bedrooms 
-}) => {
+import HouseModal from './HouseModal';
+const HouseCard = ({ images, name, price, priceNum, totalArea, floors, bedrooms, id }) => {
   const imageList = Array.isArray(images) ? images : [null];
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
-
+const [modalOpen, setModalOpen] = useState(false);
   useEffect(() => {
     const updateSlideWidth = () => {
       if (containerRef.current && sliderRef.current) {
@@ -45,7 +38,7 @@ const HouseCard = ({
   };
 
   const placeholder = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"><rect width="100%" height="100%" fill="black"/><text x="50%" y="50%" fill="white" font-size="12" text-anchor="middle">нет фото</text></svg>';
-
+  const house = { id, price: priceNum, area: totalArea, floors, bedrooms };
   return (
     <div className={z.card}>
       <div className={z.picContainer} ref={containerRef}>
@@ -95,9 +88,13 @@ const HouseCard = ({
         </div>
       </div>
 
-      <button className={z.moreButton} onClick={() => alert('Подробнее')}>
-        Подробнее
-      </button>
+       <button className={z.moreButton} onClick={() => setModalOpen(true)}>Подробнее</button>
+
+      <HouseModal
+        house={house}
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   );
 };

@@ -60,7 +60,7 @@ export default async function handler(req, res) {
     const leadJson = await leadRes.json();
     const leadId = leadJson?.[0]?.id;
 
-    // 2. Добавляем примечание отдельным запросом
+  
     if (leadId && description) {
       const noteRes = await fetch(`https://${subdomain}.amocrm.ru/api/v4/leads/${leadId}/notes`, {
         method: 'POST',

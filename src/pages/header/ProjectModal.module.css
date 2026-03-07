@@ -31,19 +31,21 @@
 
 @keyframes modalIn {
   from { opacity: 0; transform: translateY(22px) scale(0.97); }
-  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .close {
   position: absolute;
-  top: 16px; right: 20px;
+  top: 16px;
+  right: 20px;
   background: transparent;
   border: none;
   color: rgb(245, 202, 161);
   font-size: 18px;
   cursor: pointer;
-  opacity: 0.45;
+  opacity: 0.5;
   transition: opacity 0.2s;
+  line-height: 1;
 }
 .close:hover { opacity: 1; }
 
@@ -61,7 +63,7 @@
 
 .stepCount {
   font-size: 11px;
-  color: rgba(245, 202, 161, 0.38);
+  color: rgba(245, 202, 161, 0.4);
   letter-spacing: 0.1em;
   margin-bottom: 28px;
   font-weight: 300;
@@ -85,7 +87,6 @@
   line-height: 1.45;
   letter-spacing: 0.02em;
 }
-
 
 .cards {
   display: grid;
@@ -120,7 +121,6 @@
 }
 .cardIcon { font-size: 22px; }
 
-
 .results {
   display: flex;
   flex-direction: column;
@@ -153,18 +153,18 @@
   font-weight: 300;
 }
 .resultMeta {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
   font-size: 12px;
   font-weight: 300;
   letter-spacing: 0.06em;
   margin-bottom: 8px;
 }
 .resultReason {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 13px;
   font-weight: 300;
   line-height: 1.5;
-  border-top: 0.5px solid rgba(245,202,161,0.12);
+  border-top: 0.5px solid rgba(245, 202, 161, 0.12);
   padding-top: 8px;
 }
 
@@ -181,7 +181,6 @@
   letter-spacing: 0.06em;
 }
 .nextBtn:hover { background: white; color: black; }
-
 
 .contactForm {
   display: flex;
@@ -201,7 +200,7 @@
   width: 100%;
   box-sizing: border-box;
 }
-.input::placeholder { color: rgba(255,255,255,0.22); }
+.input::placeholder { color: rgba(255, 255, 255, 0.22); }
 .input:focus { border-color: rgb(245, 202, 161); }
 
 .submitBtn {
@@ -222,7 +221,7 @@
 .back {
   background: transparent;
   border: none;
-  color: rgba(245, 202, 161, 0.38);
+  color: rgba(245, 202, 161, 0.4);
   font-size: 12px;
   cursor: pointer;
   padding: 0;
@@ -233,7 +232,6 @@
   align-self: flex-start;
 }
 .back:hover { color: rgb(245, 202, 161); }
-
 
 .success {
   display: flex;
@@ -246,9 +244,12 @@
   animation: fadeIn 0.4s ease;
 }
 .successIcon {
-  width: 56px; height: 56px;
+  width: 56px;
+  height: 56px;
   border: 0.5px solid rgb(245, 202, 161);
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 22px;
   color: rgb(245, 202, 161);
   margin-bottom: 8px;
@@ -260,7 +261,7 @@
   margin: 0;
 }
 .successText {
-  color: rgba(255,255,255,0.42);
+  color: rgba(255, 255, 255, 0.42);
   font-size: 14px;
   font-weight: 300;
   line-height: 1.65;
@@ -279,4 +280,96 @@
   }
   .cards { gap: 8px; }
   .question { font-size: 17px; }
+}
+
+
+.individualBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeIn 0.4s ease;
+}
+
+.individualIcon {
+  font-size: 32px;
+  color: rgb(245, 202, 161);
+  line-height: 1;
+}
+
+.individualTitle {
+  color: white;
+  font-size: 19px;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+}
+
+.individualText {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.individualText strong {
+  color: rgb(245, 202, 161);
+  font-weight: 400;
+}
+
+.individualFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 0.5px solid rgba(245, 202, 161, 0.15);
+  padding-top: 16px;
+}
+
+.individualFeatures li {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+  font-weight: 300;
+  padding-left: 16px;
+  position: relative;
+}
+
+.individualFeatures li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgb(245, 202, 161);
+}
+
+
+@media (max-width: 400px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.fieldWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inputError {
+  border-color: rgba(255, 80, 80, 0.7) !important;
+}
+
+.inputError:focus {
+  border-color: rgb(255, 80, 80) !important;
+}
+
+.errorMsg {
+  font-size: 11px;
+  color: rgba(255, 100, 100, 0.9);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  padding-left: 2px;
 }

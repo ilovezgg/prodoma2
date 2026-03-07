@@ -3,6 +3,7 @@ import z from './Catalog.module.css';
 import HouseCard from './HouseCard';
 
 const Catalog = () => {
+  
   return (
     <div className={z.main}>
       <div className={z.textBlock}>
@@ -13,9 +14,11 @@ const Catalog = () => {
       <div className={z.container}>
         <div className={z.first}>
           <HouseCard
+          id={101}
             images={['/pics/1a.webp', '/pics/1b.webp']}
             name="Проект №101"
-            price="от 2.5 миллионов руб."
+            price="от 3.8 миллионов руб."
+            priceNum={3800000}
             totalArea="98"
             floors="1"
             bedrooms="1"
@@ -23,9 +26,11 @@ const Catalog = () => {
         </div>
         <div className={z.second}>
           <HouseCard
+          id={102}
             images={['/pics/2a.webp', '/pics/2b.webp']}
             name="Проект №102"
-            price="от 2.5 миллиона руб."
+           price="от 3.8 миллионов руб."
+            priceNum={3800000}
             totalArea="91"
             floors="1"
             bedrooms="1"
@@ -36,20 +41,24 @@ const Catalog = () => {
       <div className={z.container}>
         <div className={z.first}>
           <HouseCard
+          id={103}
             images={['/pics/3a.webp', '/pics/3b.webp']}
             name="Проект №103"
-            price="от 2.4 миллиона руб."
+            price="от 3.7 миллионов руб."
             totalArea="86"
+            priceNum={3700000}
             floors="1"
             bedrooms="1"
           />
         </div>
         <div className={z.second}>
           <HouseCard
+          id={104}
             images={['/pics/4a.webp', '/pics/4b.webp']}
             name="Проект №104"
-            price="от 2.5 миллиона руб."
+            price="от 3.6 миллионов руб."
             totalArea="91"
+            priceNum={3600000}
             floors="1"
             bedrooms="1"
           />
@@ -59,20 +68,24 @@ const Catalog = () => {
       <div className={z.container}>
         <div className={z.first}>
           <HouseCard
+          id={105}
             images={['/pics/5a.webp', '/pics/5b.webp']}
             name="Проект №105"
-            price="от 2.4 миллионов руб."
+            price="от 4.4 миллионов руб."
             totalArea="86"
+            priceNum={4400000}
             floors="1"
             bedrooms="1"
           />
         </div>
         <div className={z.second}>
           <HouseCard
+          id={106}
             images={['/pics/6a.webp', '/pics/6b.webp']}
             name="Проект №106"
-            price="от 2.5 миллиона руб."
+            price="от 4.4 миллионов руб."
             totalArea="91"
+             priceNum={4400000}
             floors="1"
             bedrooms="1"
           />
@@ -82,20 +95,24 @@ const Catalog = () => {
       <div className={z.container}>
         <div className={z.first}>
           <HouseCard
+          id={107}
             images={['/pics/7a.webp', '/pics/7b.webp']}
             name="Проект №107"
-            price="от 2.4 миллионов руб."
+            price="от 4.5 миллионов руб."
             totalArea="86"
+            priceNum={4500000}
             floors="1"
             bedrooms="1"
           />
         </div>
         <div className={z.second}>
           <HouseCard
+          id={108}
             images={['/pics/8a.webp', '/pics/8b.webp']}
             name="Проект №108"
-            price="от 2.5 миллиона руб."
+            price="от 4.7 миллиона руб."
             totalArea="91"
+            priceNum={4700000}
             floors="1"
             bedrooms="1"
           />
