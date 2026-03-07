@@ -239,3 +239,95 @@
     font-size: 14px;
   }
 }
+@media (max-width: 1280px) {
+  .title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .containerForThree {
+    height: auto;
+  }
+
+  .info {
+    width: 40%;
+  }
+
+  .pic {
+    width: 60%;
+  }
+
+  .reviewContainer {
+    height: 300px;
+  }
+
+  .review {
+    font-size: 14px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .firstReview,
+  .secondReview {
+    height: auto;
+  }
+
+  .smallReview {
+    font-size: 13px;
+    overflow-y: auto;
+    max-height: 200px;
+  }
+
+  .picFirst,
+  .picSecond {
+    min-height: 200px;
+  }
+}
+@media (max-width: 1440px) {
+  .title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .containerForThree {
+    height: auto;
+  }
+
+  .info {
+    width: 40%;
+  }
+
+  .pic {
+    width: 60%;
+  }
+
+  .reviewContainer {
+    height: 300px;
+  }
+
+  .review {
+    font-size: 14px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .firstReview,
+  .secondReview {
+    height: auto;
+  }
+
+  .smallReview {
+    font-size: 13px;
+    overflow-y: auto;
+    max-height: 200px;
+  }
+
+  .picFirst,
+  .picSecond {
+    min-height: 200px;
+  }
+}

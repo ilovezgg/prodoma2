@@ -93,19 +93,81 @@
   filter: saturate(0) brightness(0.2);
   z-index: 1;
   pointer-events: none;
+  visibility: hidden;
 }
-
 
 .enterRight {
   width: 120px;
   height: 200px;
   transform: translateX(440px) scale(0.75);
-  opacity: 0.2;
+  opacity: 0;
   filter: saturate(0.1) brightness(0.4);
   z-index: 1;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .hidden {
   opacity: 0;
   pointer-events: none;
+}
+@media (max-width: 1280px) {
+  .track {
+    height: 600px;
+  }
+
+  .center {
+    width: 260px;
+    height: 560px;
+  }
+
+  .sideLeft {
+    width: 160px;
+    height: 360px;
+    transform: translateX(-180px) scale(0.92);
+  }
+
+  .sideRight {
+    width: 160px;
+    height: 360px;
+    transform: translateX(180px) scale(0.92);
+  }
+
+  .exitLeft {
+    transform: translateX(-320px) scale(0.7);
+  }
+
+  .enterRight {
+    transform: translateX(320px) scale(0.75);
+  }
+}
+@media (max-width: 1440px) {
+  .track {
+    height: 600px;
+  }
+
+  .center {
+    width: 260px;
+    height: 560px;
+  }
+
+  .sideLeft {
+    width: 160px;
+    height: 360px;
+    transform: translateX(-180px) scale(0.92);
+  }
+
+  .sideRight {
+    width: 160px;
+    height: 360px;
+    transform: translateX(180px) scale(0.92);
+  }
+
+  .exitLeft {
+    transform: translateX(-320px) scale(0.7);
+  }
+
+  .enterRight {
+    transform: translateX(320px) scale(0.75);
+  }
 }

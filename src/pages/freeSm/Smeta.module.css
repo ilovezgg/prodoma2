@@ -152,3 +152,63 @@ gap: 12px;
     transform: translateY(-5px);
   }
 }
+@media (max-width: 1280px) {
+  .main {
+    height: auto;
+    row-gap: 40px;
+    padding: 40px 0;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .container {
+    gap: 40px;
+    height: auto;
+  }
+
+  .first, .second, .third {
+    height: auto;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+
+  .premTitle {
+    font-size: 18px;
+  }
+
+  .premText {
+    font-size: 15px;
+  }
+}
+@media (max-width: 1440px) {
+  .main {
+    height: auto;
+    row-gap: 40px;
+    padding: 40px 0;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .container {
+    gap: 40px;
+    height: auto;
+  }
+
+  .first, .second, .third {
+    height: auto;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+
+  .premTitle {
+    font-size: 18px;
+  }
+
+  .premText {
+    font-size: 15px;
+  }
+}

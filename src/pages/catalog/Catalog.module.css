@@ -71,3 +71,51 @@
     height: auto;
   }
 }
+@media (max-width: 1280px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .textBlock {
+    transform: none;
+    padding: 20px 0;
+  }
+
+  .container {
+    height: auto;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .first, .second {
+    height: auto;
+  }
+}
+@media (max-width: 1440px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .textBlock {
+    transform: none;
+    padding: 20px 0;
+  }
+
+  .container {
+    height: auto;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .first, .second {
+    height: auto;
+  }
+}
