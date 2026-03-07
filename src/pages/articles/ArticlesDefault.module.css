@@ -202,3 +202,34 @@
     font-size: 17px;
   }
 }
+@media (max-width: 1800px) {
+  .mainText {
+    font-size: 32px;
+  }
+
+  .description {
+    width: 50%;
+    height: auto;
+    font-size: 15px;
+  }
+
+  .pic {
+    height: 380px;
+  }
+
+  .block {
+    width: 90%;
+  }
+
+  .blockText {
+    font-size: 17px;
+  }
+
+  .blockText h2 {
+    font-size: 22px;
+  }
+
+  .factBlock {
+    font-size: 17px;
+  }
+}

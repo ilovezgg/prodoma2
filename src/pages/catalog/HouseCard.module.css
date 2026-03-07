@@ -235,3 +235,37 @@
     font-size: 14px;
   }
 }
+@media (max-width: 1800px) {
+  .picContainer {
+    height: 280px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .info {
+    min-height: auto;
+  }
+
+  .navButton {
+    width: 40px;
+    height: 40px;
+    font-size: 36px;
+  }
+
+  .navButton + .navButton {
+    left: 39px;
+  }
+
+  .moreButton {
+    width: 140px;
+    height: 46px;
+    font-size: 13px;
+  }
+
+  .infoTwo {
+    gap: 10px;
+    font-size: 14px;
+  }
+}

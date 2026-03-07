@@ -264,3 +264,40 @@
     font-size: 24px;
   }
 }
+@media (max-width: 1800px) {
+  .main {
+    height: auto;
+    padding: 40px 16px;
+  }
+
+  .title {
+    font-size: 32px;
+    padding-bottom: 40px;
+  }
+
+  .stepContent {
+    height: auto;
+    padding: 24px;
+  }
+
+  .titleCard {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .textCard {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .timeBadge {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .stepNumber {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+}

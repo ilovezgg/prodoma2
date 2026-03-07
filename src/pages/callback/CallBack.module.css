@@ -461,3 +461,53 @@
     width: 7px;
   }
 }
+@media (max-width: 1800px) {
+  .pic {
+    height: auto;
+    min-height: 500px;
+    align-items: flex-start;
+    padding: 30px 0;
+  }
+
+  .blackCube {
+    width: 45%;
+    height: auto;
+    transform: translateX(5%);
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .submitBtn {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .titleTwo {
+    font-size: 26px;
+    transform: none;
+    margin-bottom: 16px;
+  }
+
+  .mapSubtitle {
+    transform: none;
+    margin-bottom: 24px;
+  }
+
+  .text {
+    font-size: 60px;
+    transform: none;
+    height: auto;
+    transform: translateY(55%);
+  }
+
+  .pipe {
+    height: 50px;
+    width: 7px;
+  }
+}

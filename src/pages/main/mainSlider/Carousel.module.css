@@ -171,3 +171,34 @@
     transform: translateX(320px) scale(0.75);
   }
 }
+
+@media (max-width: 1800px) {
+  .track {
+    height: 600px;
+  }
+
+  .center {
+    width: 260px;
+    height: 560px;
+  }
+
+  .sideLeft {
+    width: 160px;
+    height: 360px;
+    transform: translateX(-180px) scale(0.92);
+  }
+
+  .sideRight {
+    width: 160px;
+    height: 360px;
+    transform: translateX(180px) scale(0.92);
+  }
+
+  .exitLeft {
+    transform: translateX(-320px) scale(0.7);
+  }
+
+  .enterRight {
+    transform: translateX(320px) scale(0.75);
+  }
+}

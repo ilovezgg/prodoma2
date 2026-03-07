@@ -127,3 +127,14 @@
     font-size: 13px;
   }
 }
+@media (max-width: 1800px) {
+  .navigation {
+    width: 65%;
+  }
+
+  .navLink {
+    width: 23%;
+    height: 50%;
+    font-size: 13px;
+  }
+}
