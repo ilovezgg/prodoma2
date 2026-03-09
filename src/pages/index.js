@@ -8,12 +8,15 @@ import Catalog from '../pages/catalog/Catalog';
 import CallBack from '../pages/callback/CallBack';
 import '../app/globals.css'
 import Footer from './footer/Footer';
-
+import Official from './official/Official';
+import Escrow1 from './exsrow/Escrow1';
 export default function HomePage() {
   return (
     <div className="App">
 
       <Main />
+      <Escrow1/>
+      <Official/>
       <Smeta />
       <HowWeWork />
       <Review />

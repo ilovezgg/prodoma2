@@ -159,86 +159,7 @@
   background: rgba(0, 0, 0, 0.8);
   color: white;
 }
-@media (max-width: 768px) {
-  .main {
-    padding: 40px 16px;
-  }
 
-  .title {
-    font-size: 22px;
-    margin-bottom: 40px;
-    width: 100%;
-  }
-
-  .containerForThree {
-    width: 100%;
-    flex-direction: column;
-    height: auto;
-  }
-
-  .info {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .reviewContainer {
-    height: 200px;
-  }
-
- .pic {
-    width: 100%;
-    height: 250px;
-    position: relative;
-    display: block;
-  }
-
-  .yandexButton {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 300;
-    margin: 0;
-  }
-
-
-  .containerForTwo {
-    width: 100%;
-    flex-direction: column;
-    margin-top: 30px;
-    gap: 20px;
-  }
-
-  .firstReview,
-  .secondReview {
-    width: 100%;
-    height: auto;
-    flex-direction: column;
-  }
-
-  .firstText,
-  .secondText {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .picFirst,
-  .picSecond {
-    width: 100%;
-    height: 200px;
-  }
-
-  .smallName {
-    font-size: 18px;
-  }
-
-  .smallReview {
-    font-size: 14px;
-  }
-}
 @media (max-width: 1280px) {
   .title {
     font-size: 32px;
@@ -375,5 +296,85 @@
   .picFirst,
   .picSecond {
     min-height: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .main {
+    padding: 40px 16px;
+  }
+
+  .title {
+    font-size: 22px;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+
+  .containerForThree {
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .info {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .reviewContainer {
+    height: 200px;
+  }
+
+ .pic {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    display: block;
+  }
+
+  .yandexButton {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+  }
+
+
+  .containerForTwo {
+    width: 100%;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 20px;
+  }
+
+  .firstReview,
+  .secondReview {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .firstText,
+  .secondText {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .picFirst,
+  .picSecond {
+    width: 100%;
+    height: 200px;
+  }
+
+  .smallName {
+    font-size: 18px;
+  }
+
+  .smallReview {
+    font-size: 14px;
   }
 }

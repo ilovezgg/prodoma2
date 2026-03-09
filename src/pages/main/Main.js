@@ -153,19 +153,19 @@ const Main = () => {
             <div className={z.iconWood}>
               <img src="/pics/Проверить ящики by iconSvg.co.svg" alt="Тепло" className={z.woodSvg} />
             </div>
-            <div className={z.textSubTitle}>Дома, где действительно тепло - проверяем тепловизором</div>
+            <div className={z.textSubTitle}>Эскроу-счёт — деньги в банке до сдачи</div>
           </div>
           <div className={z.element}>
             <div className={z.iconWood}>
               <img src="/pics/Проверить ящики by iconSvg.co.svg" alt="Тепло" className={z.woodSvg} />
             </div>
-            <div className={z.textSubTitle}>Соблюдаем сроки - сдаем объекты день в день</div>
+            <div className={z.textSubTitle}>Твёрдая смета — цена не вырастет</div>
           </div>
           <div className={z.element}>
             <div className={z.iconWood}>
               <img src="/pics/Проверить ящики by iconSvg.co.svg" alt="Тепло" className={z.woodSvg} />
             </div>
-            <div className={z.textSubTitle}>Качество, которое видно - не прячем работу под отделкой</div>
+            <div className={z.textSubTitle}>Технадзор на каждом этапе</div>
           </div>
         </div>
 
