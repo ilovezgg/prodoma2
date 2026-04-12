@@ -126,6 +126,117 @@
   background: rgba(245, 202, 161, 0.15);
   color: rgb(245, 202, 161);
 }
+@media (max-width: 1700px) {
+  .main {
+    height: auto;
+    padding: 40px 16px;
+  }
+
+  .title {
+    font-size: 40px;
+    padding-bottom: 40px;
+  }
+
+  .stepContent {
+    height: auto;
+    padding: 30px;
+  }
+
+  .titleCard {
+    font-size: 23px;
+    margin-bottom: 12px;
+  }
+
+  .textCard {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .timeBadge {
+    font-size: 15px;
+    padding: 8px 14px;
+  }
+
+  .stepNumber {
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+  }
+}
+@media (max-width: 1440px) {
+  .main {
+    height: auto;
+    padding: 40px 16px;
+  }
+
+  .title {
+    font-size: 32px;
+    padding-bottom: 40px;
+  }
+
+  .stepContent {
+    height: auto;
+    padding: 24px;
+  }
+
+  .titleCard {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .textCard {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .timeBadge {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .stepNumber {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+}
+@media (max-width: 1280px) {
+  .main {
+    height: auto;
+    padding: 40px 16px;
+  }
+
+  .title {
+    font-size: 32px;
+    padding-bottom: 40px;
+  }
+
+  .stepContent {
+    height: auto;
+    padding: 24px;
+  }
+
+  .titleCard {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .textCard {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .timeBadge {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .stepNumber {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+}
 @media (max-width: 768px) {
   .main {
     height: auto;
@@ -190,114 +301,5 @@
     padding: 6px 12px;
   }
 }
-@media (max-width: 1280px) {
-  .main {
-    height: auto;
-    padding: 40px 16px;
-  }
 
-  .title {
-    font-size: 32px;
-    padding-bottom: 40px;
-  }
 
-  .stepContent {
-    height: auto;
-    padding: 24px;
-  }
-
-  .titleCard {
-    font-size: 20px;
-    margin-bottom: 12px;
-  }
-
-  .textCard {
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
-
-  .timeBadge {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
-
-  .stepNumber {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-  }
-}
-@media (max-width: 1440px) {
-  .main {
-    height: auto;
-    padding: 40px 16px;
-  }
-
-  .title {
-    font-size: 32px;
-    padding-bottom: 40px;
-  }
-
-  .stepContent {
-    height: auto;
-    padding: 24px;
-  }
-
-  .titleCard {
-    font-size: 20px;
-    margin-bottom: 12px;
-  }
-
-  .textCard {
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
-
-  .timeBadge {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
-
-  .stepNumber {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-  }
-}
-@media (max-width: 1800px) {
-  .main {
-    height: auto;
-    padding: 40px 16px;
-  }
-
-  .title {
-    font-size: 32px;
-    padding-bottom: 40px;
-  }
-
-  .stepContent {
-    height: auto;
-    padding: 24px;
-  }
-
-  .titleCard {
-    font-size: 20px;
-    margin-bottom: 12px;
-  }
-
-  .textCard {
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
-
-  .timeBadge {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
-
-  .stepNumber {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-  }
-}

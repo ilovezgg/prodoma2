@@ -134,10 +134,9 @@
 .moreButton:focus-visible {
   outline: transparent;
 }
-
-@media (max-width: 1280px) {
+@media (max-width: 1700px) {
   .picContainer {
-    height: 280px;
+    height: 320px;
   }
 
   .name {
@@ -203,7 +202,8 @@
     font-size: 14px;
   }
 }
-@media (max-width: 1800px) {
+
+@media (max-width: 1280px) {
   .picContainer {
     height: 280px;
   }
@@ -237,6 +237,7 @@
     font-size: 14px;
   }
 }
+
 @media (max-width: 768px) {
   .picContainer {
     height: 260px;

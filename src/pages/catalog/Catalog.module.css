@@ -39,6 +39,80 @@
     width: 46%;
      height: 600px;
 }
+@media (max-width: 1700px) {
+  .title {
+    font-size: 32px;
+    color: white;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: white;
+  }
+
+  .textBlock {
+    transform: none;
+    padding: 20px 0;
+  }
+
+  .container {
+    height: auto;
+    gap: 28px;
+    margin-bottom: 50px;
+  }
+
+  .first, .second {
+    height: auto;
+  }
+}
+@media (max-width: 1440px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .textBlock {
+    transform: none;
+    padding: 20px 0;
+  }
+
+  .container {
+    height: auto;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .first, .second {
+    height: auto;
+  }
+}
+@media (max-width: 1280px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .textBlock {
+    transform: none;
+    padding: 20px 0;
+  }
+
+  .container {
+    height: auto;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .first, .second {
+    height: auto;
+  }
+}
 @media (max-width: 768px) {
     .main{
         gap: 40px;
@@ -71,77 +145,5 @@
     height: auto;
   }
 }
-@media (max-width: 1280px) {
-  .title {
-    font-size: 32px;
-  }
 
-  .subtitle {
-    font-size: 18px;
-  }
 
-  .textBlock {
-    transform: none;
-    padding: 20px 0;
-  }
-
-  .container {
-    height: auto;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  .first, .second {
-    height: auto;
-  }
-}
-@media (max-width: 1440px) {
-  .title {
-    font-size: 32px;
-  }
-
-  .subtitle {
-    font-size: 18px;
-  }
-
-  .textBlock {
-    transform: none;
-    padding: 20px 0;
-  }
-
-  .container {
-    height: auto;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  .first, .second {
-    height: auto;
-  }
-}
-@media (max-width: 1800px) {
-  .title {
-    font-size: 32px;
-    color: white;
-  }
-
-  .subtitle {
-    font-size: 18px;
-    color: white;
-  }
-
-  .textBlock {
-    transform: none;
-    padding: 20px 0;
-  }
-
-  .container {
-    height: auto;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  .first, .second {
-    height: auto;
-  }
-}

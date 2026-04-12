@@ -9,6 +9,7 @@ import CallBack from '../pages/callback/CallBack';
 import '../app/globals.css'
 import Footer from './footer/Footer';
 import Official from './official/Official';
+import Exrow from './exrowPage/Exrow';
 import Escrow1 from './exsrow/Escrow1';
 export default function HomePage() {
   return (
@@ -22,7 +23,7 @@ export default function HomePage() {
       <Review />
       <Catalog />
       <CallBack />
-
+     
     </div>
   );
 }
