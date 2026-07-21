@@ -1,19 +1,18 @@
+'use client';
 import React, { useState } from 'react';
 import z from './CallBack.module.css';
 import dynamic from 'next/dynamic';
 
 const CustomMap = dynamic(() => import('../../components/map/CustomMap'), {
   ssr: false,
-  loading: () => <div style={{ width: '100%', height: '400px' }}>Загрузка карты...</div>,
+  loading: () => <div className={z.mapLoader}>Загрузка карты...</div>,
 });
 
 const CallBack = () => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [description, setDescription] = useState('');
+  const [form, setForm] = useState({ name: '', phone: '', description: '' });
+  const [errors, setErrors] = useState({ name: '', phone: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [errors, setErrors] = useState({ name: '', phone: '' });
 
   const formatPhone = (val) => {
     let digits = val.replace(/\D/g, '');
@@ -27,32 +26,34 @@ const CallBack = () => {
     return result;
   };
 
-  const handleNameChange = (e) => {
+  const handleChange = (field) => (e) => {
     const val = e.target.value;
-    if (val === '' || /^[а-яёА-ЯЁ\s\-]*$/.test(val)) {
-      setName(val);
-      setErrors((p) => ({ ...p, name: '' }));
+    if (field === 'name') {
+      if (val === '' || /^[а-яёА-ЯЁ\s\-]*$/.test(val)) {
+        setForm((p) => ({ ...p, name: val }));
+        setErrors((p) => ({ ...p, name: '' }));
+      }
+    } else if (field === 'phone') {
+      setForm((p) => ({ ...p, phone: formatPhone(val) }));
+      setErrors((p) => ({ ...p, phone: '' }));
+    } else {
+      setForm((p) => ({ ...p, description: val }));
     }
   };
 
-  const handlePhoneChange = (e) => {
-    setPhone(formatPhone(e.target.value));
-    setErrors((p) => ({ ...p, phone: '' }));
-  };
-
   const handlePhoneFocus = () => {
-    if (!phone) setPhone('+7 (');
+    if (!form.phone) setForm((p) => ({ ...p, phone: '+7 (' }));
   };
 
   const handlePhoneKeyDown = (e) => {
-    if ((e.key === 'Backspace' || e.key === 'Delete') && phone.length <= 4) {
+    if ((e.key === 'Backspace' || e.key === 'Delete') && form.phone.length <= 4) {
       e.preventDefault();
     }
   };
 
   const validate = () => {
-    const nameErr = !name.trim() ? 'Введите имя' : !/^[а-яёА-ЯЁ\s\-]+$/.test(name.trim()) ? 'Только кириллица' : '';
-    const phoneErr = phone.replace(/\D/g, '').length < 11 ? 'Введите полный номер' : '';
+    const nameErr = !form.name.trim() ? 'Введите имя' : !/^[а-яёА-ЯЁ\s\-]+$/.test(form.name.trim()) ? 'Только кириллица' : '';
+    const phoneErr = form.phone.replace(/\D/g, '').length < 11 ? 'Введите полный номер' : '';
     setErrors({ name: nameErr, phone: phoneErr });
     return !nameErr && !phoneErr;
   };
@@ -65,108 +66,100 @@ const CallBack = () => {
       const res = await fetch('/api/amo-send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, description }),
+        body: JSON.stringify(form),
       });
       if (res.ok) {
         setIsSuccess(true);
-        setName(''); setPhone(''); setDescription('');
-      } else {
-        alert('Ошибка отправки. Попробуйте позже.');
+        setForm({ name: '', phone: '', description: '' });
       }
     } catch (err) {
-      alert('Не удалось подключиться к серверу.');
+      console.error(err);
     }
     setIsSubmitting(false);
   };
 
-  if (isSuccess) {
-    return (
-      <div className={z.main}>
-        <div className={z.pic}>
-          <div className={z.blackCube} style={{ textAlign: 'center' }}>
-            <div className={z.title}>Спасибо!</div>
-            <div className={z.subtitle}>Мы свяжемся с вами в ближайшее время.</div>
-          </div>
-        </div>
-        <div className={z.mapSection}>
-          <h1 className={z.titleTwo}>Мечтаете о доме в лесу?</h1>
-          <p className={z.mapSubtitle}>
-            Уже 142 семьи построили дом своей мечты с нами. Приходите — покажем проекты, рассчитаем бюджет и ответим на все вопросы.
-          </p>
-          <CustomMap />
-        </div>
-        <div className={z.text}>
-          <span>prodoma</span>
-          <span className={z.pipe}></span>
-          <span>prodoma</span>
-          <span className={z.pipe}></span>
-          <span>prodoma</span>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className={z.main}>
-      <div className={z.pic}>
-        <div className={z.blackCube}>
-          <div className={z.title}>Ваш дом — только для вас</div>
-          <div className={z.subtitle}>
-            Расскажите, каким вы его видите — и мы создадим уникальный проект под ваш участок, бюджет и мечты.
+    <section className={z.section}>
+      <div className={z.hero}>
+        <div className={z.inner}>
+          <div className={z.formCard}>
+            {!isSuccess ? (
+              <>
+                <div className={z.header}>
+                  <div className={z.tag}>ЗАЯВКА</div>
+                  <h2 className={z.title}>Ваш дом — <span className={z.accent}>только для вас</span></h2>
+                  <p className={z.subtitle}>
+                    Расскажите, каким вы его видите — и мы создадим уникальный проект под ваш участок, бюджет и мечты.
+                  </p>
+                </div>
+
+                <form onSubmit={handleSubmit} noValidate className={z.form}>
+                  <div className={z.field}>
+                    <input
+                      className={`${z.input} ${errors.name ? z.inputError : ''}`}
+                      type="text"
+                      placeholder="Ваше имя"
+                      value={form.name}
+                      onChange={handleChange('name')}
+                    />
+                    {errors.name && <span className={z.error}>{errors.name}</span>}
+                  </div>
+
+                  <div className={z.field}>
+                    <input
+                      className={`${z.input} ${errors.phone ? z.inputError : ''}`}
+                      type="tel"
+                      placeholder="+7 (000) 000-00-00"
+                      value={form.phone}
+                      onChange={handleChange('phone')}
+                      onFocus={handlePhoneFocus}
+                      onKeyDown={handlePhoneKeyDown}
+                      maxLength={18}
+                    />
+                    {errors.phone && <span className={z.error}>{errors.phone}</span>}
+                  </div>
+
+                  <div className={z.field}>
+                    <textarea
+                      className={z.textarea}
+                      placeholder="Что важно в вашем доме? Например: 2 этажа, большая кухня-гостиная, терраса, энергоэффективность..."
+                      value={form.description}
+                      onChange={handleChange('description')}
+                      rows={4}
+                    />
+                  </div>
+
+                  <button className={z.submitBtn} type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Отправляем...' : 'Получить индивидуальный проект'}
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div className={z.success}>
+                <div className={z.successIcon}>✓</div>
+                <div className={z.successTitle}>Спасибо!</div>
+                <div className={z.successText}>Мы свяжемся с вами в ближайшее время.</div>
+              </div>
+            )}
           </div>
-          <form onSubmit={handleSubmit} noValidate>
-            <div className={z.fieldWrap}>
-              <input
-                className={`${z.name} ${errors.name ? z.inputError : ''}`}
-                type="text"
-                placeholder="Ваше имя"
-                value={name}
-                onChange={handleNameChange}
-              />
-              {errors.name && <div className={z.errorMsg}>{errors.name}</div>}
-            </div>
-            <div className={z.fieldWrap}>
-              <input
-                className={`${z.number} ${errors.phone ? z.inputError : ''}`}
-                type="tel"
-                placeholder="+7 (000) 000-00-00"
-                value={phone}
-                onChange={handlePhoneChange}
-                onFocus={handlePhoneFocus}
-                onKeyDown={handlePhoneKeyDown}
-                maxLength={18}
-              />
-              {errors.phone && <div className={z.errorMsg}>{errors.phone}</div>}
-            </div>
-            <textarea
-              className={z.description}
-              placeholder="Что важно в вашем доме? Например: 2 этажа, большая кухня-гостиная, терраса, энергоэффективность..."
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <button className={z.submitBtn} type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Отправка...' : 'Получить индивидуальный проект'}
-            </button>
-          </form>
         </div>
       </div>
 
-      <div className={z.mapSection}>
-        <h1 className={z.titleTwo}>Мечтаете о доме в лесу?</h1>
-        <p className={z.mapSubtitle}>
-          Уже 142 семьи построили дом своей мечты с нами. Приходите — покажем проекты, рассчитаем бюджет и ответим на все вопросы.
-        </p>
-        <CustomMap />
+      <div className={z.mapBlock}>
+        <div className={z.inner}>
+          <div className={z.mapHeader}>
+            <div className={z.tag}>ОФИС</div>
+            <h2 className={z.title}>Мечтаете о доме в лесу?</h2>
+            <p className={z.subtitle}>
+              Уже 142 семьи построили дом своей мечты с нами. Приходите — покажем проекты, рассчитаем бюджет и ответим на все вопросы.
+            </p>
+          </div>
+          <div className={z.mapWrap}>
+            <CustomMap />
+          </div>
+        </div>
       </div>
-
-      <div className={z.text}>
-        <span>prodoma</span>
-        <span className={z.pipe}></span>
-        <span>prodoma</span>
-        <span className={z.pipe}></span>
-        <span>prodoma</span>
-      </div>
-    </div>
+    </section>
   );
 };
 

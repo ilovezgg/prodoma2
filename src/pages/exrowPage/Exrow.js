@@ -1,59 +1,81 @@
-import React from 'react'
-import z from './Exrow.module.css'
+'use client';
+import React from 'react';
+import z from './Exrow.module.css';
+
+const houses = [
+  {
+    id: 1,
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
+    title: 'Барнхаус 120 м²',
+    meta: 'КП "Сосновый бор" · 4 месяца',
+    price: '8.9 млн ₽',
+    tag: 'Сдан в мае 2025'
+  },
+  {
+    id: 2,
+    img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80',
+    title: 'Дом из бруса 150 м²',
+    meta: 'Д. Жуковка · 5 месяцев',
+    price: '12.4 млн ₽',
+    tag: 'Сдан в апреле 2025'
+  },
+  {
+    id: 3,
+    img: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&q=80',
+    title: 'Каркасник 95 м²',
+    meta: 'КП "Лесной" · 3.5 месяца',
+    price: '6.2 млн ₽',
+    tag: 'Сдан в марте 2025'
+  },
+  {
+    id: 4,
+    img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&q=80',
+    title: 'Дом с террасой 180 м²',
+    meta: 'П. Ильинское · 6 месяцев',
+    price: '15.1 млн ₽',
+    tag: 'Сдан в феврале 2025'
+  },
+];
 
 const Exrow = () => {
   return (
-    <div className={z.main}>
-      
-      {/* Блок заголовка */}
-      <div className={z.headerSection}>
-        <div className={z.bigCount}>
-          3 шага к дому вашей мечты <br/> с помощью эскроу-счета
+    <section className={z.section}>
+      <div className={z.inner}>
+        <div className={z.header}>
+          <div className={z.tag}>ПОРТФОЛИО</div>
+          <h2 className={z.title}>
+            142 дома <span className={z.accent}>уже сдали</span> с 2019 года
+          </h2>
+          <p className={z.subTitle}>
+            Каждый дом — по твёрдой смете, в срок, без доплат. Вот последние объекты.
+          </p>
         </div>
-        <div className={z.subTitle}>
-          Полная прозрачность и безопасность ваших средств на каждом этапе
+
+        <div className={z.grid}>
+          {houses.map((house) => (
+            <div key={house.id} className={z.card}>
+              <div className={z.imageWrap}>
+                <img src={house.img} alt={house.title} className={z.image} />
+                <div className={z.imageTag}>{house.tag}</div>
+              </div>
+              <div className={z.content}>
+                <div className={z.cardTitle}>{house.title}</div>
+                <div className={z.cardMeta}>{house.meta}</div>
+                <div className={z.cardBottom}>
+                  <div className={z.cardPrice}>{house.price}</div>
+                  <button className={z.cardBtn}>Смета проекта</button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className={z.footer}>
+          <button className={z.moreBtn}>Смотреть все 142 сданных дома</button>
         </div>
       </div>
+    </section>
+  );
+};
 
-      {/* Сетка карточек */}
-      <div className={z.containerForCards}>
-        
-        {/* Карточка 1 */}
-        <div className={z.card}>
-          <div className={z.numberBg}>01</div>
-          <div className={z.title}>
-            Вы кладёте деньги в банк
-          </div>
-          <div className={z.text}>
-            Вы переводите средства не застройщику, а на специальный эскроу-счёт. Деньги замораживаются и недоступны никому до конца стройки. Это ваша гарантия.
-          </div>
-        </div>
-
-        {/* Карточка 2 */}
-        <div className={z.card}>
-          <div className={z.numberBg}>02</div>
-          <div className={z.title}>
-            Мы строим за свой счёт
-          </div>
-          <div className={z.text}>
-            Мы используем собственные и кредитные средства. Ваши деньги всё это время лежат в банке и работают на вас, сохраняя свою стоимость.
-          </div>
-        </div>
-
-        {/* Карточка 3 */}
-        <div className={z.card}>
-          <div className={z.numberBg}>03</div>
-          <div className={z.title}>
-            Вы принимаете дом
-          </div>
-          <div className={z.text}>
-            Только после вашей личной подписи и приёмки ключей банк переводит деньги нам. Если есть недочёты — мы их исправим до оплаты.
-          </div>
-        </div>
-
-      </div>
-    </div>
-  )
-}
-
-export default Exrow
+export default Exrow;

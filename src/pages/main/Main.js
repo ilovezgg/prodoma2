@@ -5,16 +5,30 @@ import HeroSlider from './mainSlider/Carousel';
 import Link from 'next/link';
 
 const slides = [
-  '/pics/main1.webp',
-  '/pics/main2.webp',
-  '/pics/main3.webp',
+  { 
+    img: '/pics/-a-frame-8k (1).webp', 
+    tag: 'Выгода №1',
+    title: 'Заезжаете в готовый дом. Без стройки',
+    text: 'Не контролируете бригады и не живёте на участке. Принимаете работы по этапам и получаете ключи. Всё.'
+  },
+  { 
+    img: '/pics/-a-frame-8k.webp', 
+    tag: 'Выгода №2', 
+    title: 'Знаете финальную цену до старта',
+    text: 'Полный проект со всеми сетями и отделкой. Смета фиксируется в договоре. Никаких «а это не посчитали».'
+  },
+  { 
+    img: '/pics/cozy_minimalist_house_night.webp', 
+    tag: 'Выгода №3',
+    title: 'Ваши деньги защищены законом',
+    text: 'Не платите нам напрямую. Деньги лежат в банке на эскроу-счёте. Получим их только после вашей приёмки дома.'
+  },
 ];
 
-const ProjectsModal = ({ onClose }) => {
+const ConsultModal = ({ onClose }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [wish, setWish] = useState('');
+  const [comment, setComment] = useState('');
   const [errors, setErrors] = useState({ name: '', phone: '' });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -50,8 +64,8 @@ const ProjectsModal = ({ onClose }) => {
   };
 
   const handleSubmit = async () => {
-    const nameErr = !name.trim() ? 'Введите имя' : !/^[а-яёА-ЯЁ\s\-]+$/.test(name.trim()) ? 'Только кириллица' : '';
-    const phoneErr = phone.replace(/\D/g, '').length < 11 ? 'Введите полный номер' : '';
+    const nameErr = !name.trim() ? 'Как к вам обращаться?' : !/^[а-яёА-ЯЁ\s\-]+$/.test(name.trim()) ? 'Только кириллица' : '';
+    const phoneErr = phone.replace(/\D/g, '').length < 11 ? 'Номер неполный' : '';
     if (nameErr || phoneErr) { setErrors({ name: nameErr, phone: phoneErr }); return; }
     setLoading(true);
     try {
@@ -60,7 +74,7 @@ const ProjectsModal = ({ onClose }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name, phone,
-          description: `Запрос доступа к топ-200 проектов\nEmail: ${email || '—'}\nПожелания: ${wish || '—'}`,
+          description: `Заявка с главного экрана\nКомментарий: ${comment || '—'}`,
         }),
       });
       setSuccess(true);
@@ -74,14 +88,16 @@ const ProjectsModal = ({ onClose }) => {
         <button className={z.closeBtn} onClick={onClose}>✕</button>
         {!success ? (
           <>
-            <div className={z.modalTitle}>В нашей базе 200 типовых проектов</div>
-            <div className={z.modalSub}>Оставьте данные — мы вышлем доступ к базе проектов, а проектировщик поможет подобрать и доработать проект</div>
+            <div className={z.modalTitle}>Узнайте стоимость вашего дома</div>
+            <div className={z.modalSub}>
+              Инженер за 10 минут разберёт вашу задачу по телефону. Посчитает реальный бюджет под ключ и скажет, на чём можно сэкономить без потери качества. Это бесплатно и ни к чему не обязывает.
+            </div>
 
             <div className={z.fieldWrap}>
               <input
                 className={`${z.input} ${errors.name ? z.inputError : ''}`}
                 type="text"
-                placeholder="Введите своё имя"
+                placeholder="Ваше имя"
                 value={name}
                 onChange={handleNameChange}
               />
@@ -100,34 +116,25 @@ const ProjectsModal = ({ onClose }) => {
               />
               {errors.phone && <div className={z.errorMsg}>{errors.phone}</div>}
             </div>
-            <div className={z.fieldLabel}>Куда высылать примеры проектов? Необязательное поле:</div>
-            <div className={z.fieldWrap}>
-              <input
-                className={z.input}
-                type="email"
-                placeholder="Введите свой email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
             <div className={z.fieldWrap}>
               <textarea
                 className={z.textarea}
-                placeholder="Оставьте свои пожелания к проекту, если они у вас есть"
-                value={wish}
-                onChange={(e) => setWish(e.target.value)}
+                placeholder="Какой дом хотите? Метраж, этажи, материал. Если есть участок — напишите особенности"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
                 rows={3}
               />
             </div>
             <button className={z.submitBtn} onClick={handleSubmit} disabled={loading}>
-              {loading ? 'Отправляем...' : 'Обсудить проект'}
+              {loading ? 'Отправляем...' : 'Получить расчёт'}
             </button>
+            <div className={z.modalNote}>Нажимая кнопку, вы соглашаетесь на обработку данных. Звонков без повода не будет.</div>
           </>
         ) : (
           <div className={z.successBlock}>
             <div className={z.successIcon}>✓</div>
-            <div className={z.successTitle}>Спасибо, {name}!</div>
-            <div className={z.successText}>Мы вышлем доступ к базе проектов и свяжемся с вами в ближайшее время.</div>
+            <div className={z.successTitle}>Готово, {name}</div>
+            <div className={z.successText}>Инженер свяжется с вами в течение 15 минут и подготовит предварительный расчёт. Если заявка вечером — наберём с 9:00.</div>
           </div>
         )}
       </div>
@@ -139,52 +146,43 @@ const Main = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div className={z.main}>
-      <div className={z.pics}>
-        <HeroSlider slides={slides} />
+    <div className={z.container}>
+      <div className={z.main}>
+        <div className={z.left}>
+          <div className={z.tag}>Строим с 2012 года</div>
+          <h1 className={z.titleText}>
+            Загородные дома <span className={z.order}>под ключ</span> — от проекта до тапочек
+          </h1>
+          <div className={z.subText}>
+            Берём на себя всё: проектирование, закупку, стройку, контроль и уборку. Вы просто принимаете готовый дом и заезжаете жить. Без рисков, доплат и нервов.
+          </div>
+          
+          <div className={z.trustLine}>
+            <div className={z.trustItem}>
+              <span className={z.trustIcon}>✓</span> Деньги в банке до сдачи по ФЗ №186
+            </div>
+            <div className={z.trustItem}>
+              <span className={z.trustIcon}>✓</span> Цена в договоре финальная по ст. 709 ГК РФ
+            </div>
+            <div className={z.trustItem}>
+              <span className={z.trustIcon}>✓</span> Независимый технадзор отвечает за качество
+            </div>
+          </div>
+
+          <div className={z.buttons}>
+            <div className={z.btnPrimary} onClick={() => setModalOpen(true)}>
+              Узнать стоимость моего дома
+            </div>
+            <Link href="/objects" className={z.btnSecondary}>Смотреть 142 сданных дома</Link>
+          </div>
+        </div>
+
+        <div className={z.right}>
+          <HeroSlider slides={slides} />
+        </div>
       </div>
 
-      <div className={z.title}>
-        <div className={z.titleText}>
-          Строим <span className={z.order}>дома мечты</span>, в которые хочется возвращаться
-        </div>
-        <div className={z.subTitle}>
-          <div className={z.element}>
-            <div className={z.iconWood}>
-              <img src="/pics/Проверить ящики by iconSvg.co.svg" alt="Тепло" className={z.woodSvg} />
-            </div>
-            <div className={z.textSubTitle}>Эскроу-счёт — деньги в банке до сдачи</div>
-          </div>
-          <div className={z.element}>
-            <div className={z.iconWood}>
-              <img src="/pics/Проверить ящики by iconSvg.co.svg" alt="Тепло" className={z.woodSvg} />
-            </div>
-            <div className={z.textSubTitle}>Твёрдая смета — цена не вырастет</div>
-          </div>
-          <div className={z.element}>
-            <div className={z.iconWood}>
-              <img src="/pics/Проверить ящики by iconSvg.co.svg" alt="Тепло" className={z.woodSvg} />
-            </div>
-            <div className={z.textSubTitle}>Технадзор на каждом этапе</div>
-          </div>
-        </div>
-
-        <div className={z.buttonsDesktop}>
-          <div className={z.getProjects} onClick={() => setModalOpen(true)}>
-            Получить доступ к топ-200 проектов
-          </div>
-          <Link href="/objects" className={z.podr}>Смотреть построенные объекты</Link>
-        </div>
-      </div>
-
-      <div className={z.buttonsMobile}>
-        <div className={z.getProjects} onClick={() => setModalOpen(true)}>
-          Получить доступ к топ-200 проектов
-        </div>
-        <Link href="/objects" className={z.podr}>Смотреть построенные объекты</Link>
-      </div>
-
-      {modalOpen && <ProjectsModal onClose={() => setModalOpen(false)} />}
+      {modalOpen && <ConsultModal onClose={() => setModalOpen(false)} />}
     </div>
   );
 };

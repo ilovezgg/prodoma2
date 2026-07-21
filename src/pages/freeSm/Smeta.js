@@ -1,10 +1,30 @@
+'use client';
 import React, { useRef, useEffect } from 'react';
 import z from './Smeta.module.css';
 
+const risks = [
+  {
+    id: '01',
+    title: 'Ваши деньги защищены банком',
+    text: 'Не платите нам напрямую. Деньги хранятся на эскроу-счёте по ФЗ №186. Мы получим их только после того, как вы подпишете акт приёмки готового дома.',
+    tag: 'Финансовая безопасность'
+  },
+  {
+    id: '02', 
+    title: 'Цена в договоре — финальная',
+    text: 'Составляем полную смету до гвоздя. Фиксируем её по ст. 709 ГК РФ. Если бетон или дерево подорожают завтра — это наши убытки, не ваши.',
+    tag: 'Без доплат'
+  },
+  {
+    id: '03',
+    title: 'Качество проверяет не прораб',
+    text: 'Каждый этап принимает независимый технадзор. Он материально отвечает за найденный брак. Поэтому ему выгодно найти косяк, а не закрыть на него глаза.',
+    tag: 'Контроль качества'
+  },
+];
+
 const Smeta = () => {
-  const firstRef = useRef(null);
-  const secondRef = useRef(null);
-  const thirdRef = useRef(null);
+  const refs = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -12,56 +32,46 @@ const Smeta = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add(z.animate);
+            observer.unobserve(entry.target);
           }
         });
       },
-      {
-        threshold: 0.1, 
-      }
+      { threshold: 0.2 }
     );
 
-    if (firstRef.current) observer.observe(firstRef.current);
-    if (secondRef.current) observer.observe(secondRef.current);
-    if (thirdRef.current) observer.observe(thirdRef.current);
-
-    return () => {
-      if (firstRef.current) observer.unobserve(firstRef.current);
-      if (secondRef.current) observer.unobserve(secondRef.current);
-      if (thirdRef.current) observer.unobserve(thirdRef.current);
-    };
+    refs.current.forEach((el) => el && observer.observe(el));
+    return () => refs.current.forEach((el) => el && observer.unobserve(el));
   }, []);
 
   return (
-    <div className={z.main}>
-      <div className={z.title}>
-      Строим без рисков — для тех кто не хочет сюрпризов
-      </div>
-      <div className={z.container}>
-        <div className={z.first} ref={firstRef}>
-          <div className={z.premTitle}>
-            Никаких менеджеров по продажам 
-          </div>
-          <div className={z.premText}>
-            Вся информация открыта на сайте. Если есть вопрос — технический консультант отвечает за 15 минут. Не продаёт, не уговаривает.
+    <div className={z.wrap}>
+      <div className={z.inner}>
+        <div className={z.header}>
+          <div className={z.tag}>СИСТЕМА БЕЗОПАСНОСТИ</div>
+          <h2 className={z.title}>
+            3 причины, почему с нами <span className={z.accent}>вы не рискуете</span>
+          </h2>
+          <div className={z.subTitle}>
+            Мы убрали из стройки всё, из-за чего 90% людей теряют деньги и нервы
           </div>
         </div>
 
-        <div className={z.second} ref={secondRef}>
-          <div className={z.premTitle}>
-            Каждую работу делает специалист
-          </div>
-          <div className={z.premText}>
-            Фундамент, электрика, сантехника, вентиляция — отдельный мастер на каждый раздел. Прораб координирует всех на объекте.
-          </div>
-        </div>
-
-        <div className={z.third} ref={thirdRef}>
-          <div className={z.premTitle}>
-            Участок сдаём чистым
-          </div>
-          <div className={z.premText}>
-            После завершения вывозим весь мусор и остатки материалов. Никаких обрезков и брошенного инструмента.
-          </div>
+        <div className={z.grid}>
+          {risks.map((item, i) => (
+            <div 
+              key={item.id} 
+              className={z.card} 
+              ref={el => refs.current[i] = el}
+              style={{ transitionDelay: `${i * 0.1}s` }}
+            >
+              <div className={z.cardTop}>
+                <div className={z.cardId}>{item.id}</div>
+                <div className={z.cardTag}>{item.tag}</div>
+              </div>
+              <div className={z.cardTitle}>{item.title}</div>
+              <div className={z.cardText}>{item.text}</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

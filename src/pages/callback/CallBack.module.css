@@ -1,514 +1,233 @@
-.main {
+.section {
   width: 100%;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  padding: 30px 0; 
-   overflow: hidden;
+  background: #0A0A0A;
+  font-family: var(--font-inter), 'Inter', -apple-system, sans-serif;
 }
 
-.pic {
-  width: 92%;
-  height: 600px; 
+.hero {
+  width: 100%;
   background-image: url('/pics/nebol-soi-castnyi-dom-v-lesu-v-tuddal-gaustatoppen-norvegia.jpg');
   background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  margin-bottom: 24px; 
+  background-position: center 65%;
+  border-bottom: 1px solid #1A1A1A;
+  position: relative;
 }
 
-.blackCube {
-  width: 35%;
-  height: 87%;
-  background: rgba(20, 20, 25, 0.78);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 32px;
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 40%, rgba(10,10,10,0.2) 100%);
+  z-index: 1;
+}
+
+.inner {
+  width: 90%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 100px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.formCard {
+  width: 100%;
+  max-width: 640px;
+  background: #111111;
+  border: 1px solid #1A1A1A;
+  padding: 64px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 20px; 
-  transform: translateX(10%);
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  gap: 48px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(245, 202, 161);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 .title {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.4;
-  color: #f0f0f0;
-  text-align: left;
+  font-size: 48px;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
 }
 
-.name,
-.number {
+.accent {
+  color: rgb(245, 202, 161);
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: #B8B8B8;
+  line-height: 1.7;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input,
+.textarea {
   width: 100%;
-  padding: 14px 18px;
-   background: rgba(255, 255, 255, 0);
-  border: 1px solid rgba(245, 202, 161);
-  border-radius: 5px;
-  color: #ffffff;
+  padding: 20px;
+  background: transparent;
+  border: 1px solid #2A2A2A;
+  color: #FFFFFF;
   font-size: 16px;
+  font-weight: 300;
   font-family: inherit;
   outline: none;
-  transition: all 0.25s ease;
-  margin-bottom: 8px; 
+  transition: border-color 0.2s ease;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #666;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: rgb(245, 202, 161);
+}
+
+.inputError {
+  border-color: #E5484D !important;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.error {
+  font-size: 13px;
+  color: #E5484D;
   font-weight: 300;
-}
-
-.name::placeholder,
-.number::placeholder {
-  color: rgba(255, 255, 255);
-  opacity: 1;
-}
-
-.name:focus,
-.number:focus {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.15);
 }
 
 .submitBtn {
   width: 100%;
   padding: 22px;
-  margin-top: 10px;
   background: rgb(245, 202, 161);
-  border: none;
-  border-radius: 5px;
-  color: #1a1a1a;
+  border: 1px solid rgb(245, 202, 161);
+  color: #0A0A0A;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
- 
+  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+  margin-top: 12px;
 }
 
-.submitBtn:hover {
-  transform: translateY(-1px);
+.submitBtn:hover:not(:disabled) {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
 }
 
-.submitBtn:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(245, 202, 161, 0.25);
+.submitBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
-.subtitle {
-  font-size: 16px;
-  color: #ccc;
-  line-height: 1.5;
-  font-weight: 400;
-  text-align: left;
-  font-family: inherit;
-}
-
-.description {
-  width: 100%;
-  padding: 14px 18px;
-  background: rgba(255, 255, 255, 0);
-  border: 1px solid rgba(245, 202, 161);
-  border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
-  font-family: inherit;
-  outline: none;
-  margin-bottom: 8px; 
-  resize: vertical;
-    font-weight: 300;
-  min-height: 140px;
-  max-height: 140px;
-  transition: all 0.25s ease;
-}
-
-.description::placeholder {
-  color: rgba(255, 255, 255);
-  opacity: 1;
-}
-
-.description:focus {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.09);
-}
-
-
-.mapSection {
-  width: 100%;
+.success {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 24px 0; 
-}
-
-.titleTwo {
-  font-size: 36px; 
-  font-weight: 300;
-  color: #f0f0f0;
-  margin-bottom: 42px; 
   text-align: center;
-  transform: translateY(80%);
+  gap: 24px;
+  padding: 80px 0;
 }
 
-
-.mapSubtitle {
-  color: #aaa;
-  font-size: 17px;
-  text-align: center;
-  max-width: 680px;
-  margin: 0 44px 84px;
-  line-height: 1.7;
-  transform: translateY(20%);
-}
-
-.text {
-  width: 100%;
-  height: 160px;
+.successIcon {
+  width: 72px;
+  height: 72px;
+  border: 1px solid rgb(245, 202, 161);
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
-  font-size: 100px;
-  text-transform: uppercase;
-  color: #fffefe5b;
-   transform: translateY(44%)
+  font-size: 32px;
+  color: rgb(245, 202, 161);
 }
 
-.pipe {
-  width: 14px;
-  height: 75px;
-  background: #fffefe5b;
-  display: block;
-  flex-shrink: 0;
+.successTitle {
+  font-size: 32px;
+  font-weight: 400;
+  color: #FFFFFF;
 }
 
-@media (max-width: 1280px) {
-  .pic {
-    height: auto;
-    min-height: 500px;
-    align-items: flex-start;
-    padding: 30px 0;
-  }
-
-  .blackCube {
-    width: 45%;
-    height: auto;
-    transform: translateX(5%);
-  }
-
-  .title {
-    font-size: 20px;
-  }
-
-  .subtitle {
-    font-size: 14px;
-  }
-
-  .submitBtn {
-    padding: 16px;
-    font-size: 14px;
-  }
-
-  .titleTwo {
-    font-size: 26px;
-    transform: none;
-    margin-bottom: 16px;
-  }
-
-  .mapSubtitle {
-    transform: none;
-    margin-bottom: 24px;
-  }
-
-  .text {
-    font-size: 60px;
-    transform: none;
-    height: auto;
-    transform: translateY(55%);
-  }
-
-  .pipe {
-    height: 50px;
-    width: 7px;
-  }
-}
-@media (max-width: 1440px) {
-  .pic {
-    height: auto;
-    min-height: 500px;
-    align-items: flex-start;
-    padding: 30px 0;
-  }
-
-  .blackCube {
-    width: 45%;
-    height: auto;
-    transform: translateX(5%);
-  }
-
-  .title {
-    font-size: 20px;
-  }
-
-  .subtitle {
-    font-size: 14px;
-  }
-
-  .submitBtn {
-    padding: 16px;
-    font-size: 14px;
-  }
-
-  .titleTwo {
-    font-size: 26px;
-    transform: none;
-    margin-bottom: 16px;
-  }
-
-  .mapSubtitle {
-    transform: none;
-    margin-bottom: 24px;
-  }
-
-  .text {
-    font-size: 60px;
-    transform: none;
-    height: auto;
-    transform: translateY(55%);
-  }
-
-  .pipe {
-    height: 50px;
-    width: 7px;
-  }
-}
-@media (max-width: 1800px) {
-  .pic {
-    height: auto;
-    min-height: 500px;
-    align-items: flex-start;
-    padding: 30px 0;
-  }
-
-  .blackCube {
-    width: 45%;
-    height: auto;
-    transform: translateX(5%);
-  }
-
-  .title {
-    font-size: 20px;
-  }
-
-  .subtitle {
-    font-size: 14px;
-  }
-
-  .submitBtn {
-    padding: 16px;
-    font-size: 14px;
-  }
-
-  .titleTwo {
-    font-size: 26px;
-    transform: none;
-    margin-bottom: 16px;
-  }
-
-  .mapSubtitle {
-    transform: none;
-    margin-bottom: 24px;
-  }
-
-  .text {
-    font-size: 60px;
-    transform: none;
-    height: auto;
-    transform: translateY(55%);
-  }
-
-  .pipe {
-    height: 50px;
-    width: 7px;
-  }
-}
-@media(max-width:768px){
-  .main {
-  width: 100%;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  padding: 30px 0; 
-   overflow: hidden;
-}
-
-.pic {
-  width: 92%;
-  height: 700px; 
-  background-image: url('/pics/nebol-soi-castnyi-dom-v-lesu-v-tuddal-gaustatoppen-norvegia.jpg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-
-  margin-bottom: 24px; 
-}
-
-.blackCube {
-  width: 95%;
-  height: 87%;
-  background: rgba(20, 20, 25, 0.78);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 20px; 
-  position: relative;
-  transform: translateX(2.5%);
-  z-index: 1;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-}
-
-.title {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.4;
-  color: #f0f0f0;
-  text-align: left;
-}
-
-.name,
-.number {
-  width: 100%;
-  padding: 14px 18px;
-  background: rgba(255, 255, 255, 0);
-  border: 1px solid rgba(245, 202, 161);
-  border-radius: 5px;
-  color: #ffffff;
-  font-size: 14px;
-  font-family: inherit;
-  outline: none;
-  transition: all 0.25s ease;
-  margin-bottom: 8px; 
-}
-
-.name::placeholder,
-.number::placeholder {
-  color: rgba(255, 255, 255);
-  opacity: 1;
-}
-
-.name:focus,
-.number:focus {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.09);
-}
-
-.submitBtn {
-  width: 100%;
-  padding: 14px;
-  background: rgb(245, 202, 161);
-  border: none;
-  border-radius: 5px;
-  color: #1a1a1a;
+.successText {
   font-size: 16px;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
-  box-shadow: 0 4px 12px rgba(245, 202, 161, 0.25);
-}
-
-.submitBtn:hover {
-  background: rgb(247, 210, 175);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(245, 202, 161, 0.35);
-}
-
-.submitBtn:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(245, 202, 161, 0.25);
-}
-.description {
-  width: 100%;
-  padding: 14px 18px;
-  background: rgba(255, 255, 255, 0);
-  border: 1px solid rgba(245, 202, 161);
-  border-radius: 5px;
-  color: #fff;
-  font-size: 14px;
-  font-family: inherit;
-  outline: none;
-  margin-bottom: 8px; 
-  resize: vertical;
-  min-height: 110px;
-  max-height: 140px;
-  transition: all 0.25s ease;
-}
-
-.description::placeholder {
-  color: rgba(255, 255, 255);
-  opacity: 1;
-}
-
-.description:focus {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.09);
-}
-.subtitle {
-  font-size: 14px;
-  color: #ccc;
-  line-height: 1.5;
-  font-weight: 400;
-  text-align: left;
-  font-family: inherit;
-}
-.titleTwo {
-  font-size: 20px; 
-  font-weight: 400;
-  color: #f0f0f0;
-  margin-bottom: 12px; 
-  text-align: center;
-}
-
-
-.mapSubtitle {
-  color: #aaa;
-  font-size: 14px;
-  text-align: center;
-  max-width: 290px;
-  margin: 0 0 24px;
-  line-height: 1.5;
   font-weight: 300;
-}
-.text {
-  width: 100%;
-  height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  font-size: 40px;
-  text-transform: uppercase;
-  color: #fffefe5b;
-  transform: translateY(115%);
+  color: #B8B8B8;
+  line-height: 1.6;
 }
 
-.pipe {
-  width: 5px;
-  height: 32px;
-  background: #fffefe5b;
-  display: block;
-  flex-shrink: 0;
+.mapBlock {
+  border-top: 1px solid #1A1A1A;
 }
+
+.mapHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 80px;
+}
+
+.mapWrap {
+  width: 100%;
+  height: 700px;
+  border: 1px solid #1A1A1A;
+}
+
+.mapLoader {
+  width: 100%;
+  height: 700px;
+  background: #111111;
+  border: 1px solid #1A1A1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+.inner { padding: 80px 0; }
+.formCard { max-width: 100%; padding: 48px 40px; }
+.title { font-size: 40px; }
+.mapWrap, .mapLoader { height: 600px; }
+}
+
+@media (max-width: 768px) {
+.inner { padding: 60px 0; }
+.formCard { padding: 32px 24px; gap: 32px; }
+.title { font-size: 32px; }
+.subtitle { font-size: 16px; }
+.input, .textarea { padding: 18px; font-size: 15px; }
+.submitBtn { padding: 20px; font-size: 15px; }
+.mapHeader { margin: 0 auto 40px; }
+.mapWrap, .mapLoader { height: 450px; }
 }

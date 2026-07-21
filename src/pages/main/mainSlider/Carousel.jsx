@@ -3,77 +3,78 @@
 import { useState, useCallback, useRef } from "react";
 import styles from "./Carousel.module.css";
 
-const DURATION = 600;
-
-function makeItems(images, centerImgIndex, idRef) {
-  return [-2, -1, 0, 1, 2].map((pos) => ({
-    id: idRef.current++,
-    imgIndex: (centerImgIndex + pos + images.length) % images.length,
-    pos,
-  }));
-}
+const DURATION = 500;
 
 export default function Carousel({ slides }) {
-  const images =
-    slides && slides.length >= 3
-      ? slides
-      : [
-          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-          "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80",
-          "https://images.unsplash.com/photo-1502786129293-79981df4e689?w=800&q=80",
-          "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
-          "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80",
-        ];
+  const data = slides && slides.length >= 1? slides : [
+    { img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80", tag: "Выгода №1", title: "Заезжаете в готовый дом. Без стройки", text: "Не контролируете бригады и не живёте на участке. Принимаете работы по этапам и получаете ключи. Всё." },
+  ];
 
-  const idRef = useRef(0);
-  const [centerImg, setCenterImg] = useState(0);
-  const [items, setItems] = useState(() => makeItems(images, 0, idRef));
+  const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
   const goTo = useCallback(
     (direction) => {
       if (animating) return;
       setAnimating(true);
-
-      const delta = direction === "next" ? -1 : 1;
-
-      setItems((prev) =>
-        prev.map((item) => ({ ...item, pos: item.pos + delta }))
-      );
-
-      setTimeout(() => {
-        const newCenter = (centerImg - delta + images.length) % images.length;
-        setCenterImg(newCenter);
-        setItems(makeItems(images, newCenter, idRef));
-        setAnimating(false);
-      }, DURATION);
+      const newIndex = direction === "next" 
+      ? (activeIndex + 1) % data.length 
+        : (activeIndex - 1 + data.length) % data.length;
+      
+      setActiveIndex(newIndex);
+      setTimeout(() => setAnimating(false), DURATION);
     },
-    [animating, centerImg, images]
+    [animating, activeIndex, data.length]
   );
 
-  const posClass = (pos) => {
-    if (pos === 0) return styles.center;
-    if (pos === -1) return styles.sideLeft;
-    if (pos === 1) return styles.sideRight;
-    if (pos <= -2) return styles.exitLeft;
-    if (pos >= 2) return styles.enterRight;
-    return styles.hidden;
+  const touchStart = useRef(null);
+  const handleTouchStart = (e) => {
+    touchStart.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = (e) => {
+    if (!touchStart.current) return;
+    const diff = touchStart.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      diff > 0? goTo("next") : goTo("prev");
+    }
+    touchStart.current = null;
   };
 
   return (
-    <div className={styles.track}>
-      {items.map(({ id, imgIndex, pos }) => (
-        <div
-          key={id}
-          className={`${styles.slide} ${posClass(pos)}`}
-          onClick={() => {
-            if (pos > 0) goTo("next");
-            if (pos < 0) goTo("prev");
-          }}
-        >
-          <img src={images[imgIndex]} alt="" draggable={false} />
+    <div className={styles.wrap}>
+      <div 
+        className={styles.track}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {data.map((slide, i) => (
+          <div
+            key={i}
+            className={`${styles.slide} ${i === activeIndex? styles.active : ''}`}
+            style={{ transform: `translateX(${(i - activeIndex) * 100}%)` }}
+          >
+            <img src={slide.img} alt={slide.title} draggable={false} />
+            <div className={styles.overlay}></div>
+            <div className={styles.content}>
+              <div className={styles.tag}>{slide.tag}</div>
+              <div className={styles.slideTitle}>{slide.title}</div>
+              <div className={styles.slideText}>{slide.text}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className={styles.controls}>
+        <div className={styles.dots}>
+          {data.map((_, i) => (
+            <div 
+              key={i} 
+              className={`${styles.dot} ${i === activeIndex? styles.dotActive : ''}`}
+              onClick={() =>!animating && setActiveIndex(i)}
+            />
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 }

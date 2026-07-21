@@ -1,200 +1,209 @@
 .section {
   width: 100%;
-  background: #080808;
-  padding: 100px 0;
-  border-top: 0.5px solid rgba(245, 202, 161);
-  border-bottom: 0.5px solid rgba(245, 202, 161);
+  background: #0A0A0A;
+  padding: 120px 0;
+  border-top: 1px solid #1A1A1A;
 }
 
 .inner {
-  width: 99%;
-  max-width: 1880px;
+  width: 90%;
+  max-width: 1720px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 72px;
-  padding-left: 100px;
-  box-sizing: border-box;
+  gap: 64px;
 }
 
-.heroText {
+.header {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-width: 760px;
 }
 
-.label {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgb(245, 202, 161);
-  font-weight: 300;
-}
-
-.title {
-  font-size: 64px;
-  font-weight: 300;
-  color: white;
-  line-height: 1.15;
-  margin: 0;
-}
-
-.gold {
-  color: rgb(245, 202, 161);
-}
-
-
-.scheme {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.step {
-  display: flex;
-  align-items: flex-start;
-  gap: 32px;
-  padding: 36px 0;
-  border-bottom: 0.5px solid rgba(245, 202, 161, 0.1);
-  transition: background 0.3s;
-}
-
-.step:first-child {
-  border-top: 0.5px solid rgba(245, 202, 161, 0.1);
-}
-
-.step:hover {
-  padding-left: 16px;
-}
-
-.stepNum {
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(245, 202, 161, 0.5);
-  letter-spacing: 0.1em;
-  min-width: 32px;
-  padding-top: 4px;
-}
-
-.stepContent {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.stepTitle {
-  font-size: 20px;
+.tag {
+  font-size: 12px;
   font-weight: 400;
-  color: white;
-  letter-spacing: 0.02em;
-}
-
-.stepText {
-  font-size: 15px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.4);
-  line-height: 1.7;
-  max-width: 600px;
-}
-
-.connector {
-  display: none;
-}
-
-
-.bottomFact {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  padding: 40px;
-  border: 1px solid rgba(245, 202, 161);
-  margin-top: 16px;
-}
-
-.bottomLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 160px;
-  flex-shrink: 0;
-}
-
-.bigText {
-  font-size: 36px;
-  font-weight: 300;
   color: rgb(245, 202, 161);
-  letter-spacing: 0.05em;
-}
-
-.bigSub {
-  font-size: 11px;
-  font-weight: 300;
-  color: rgba(255, 255, 255);
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
-.bottomDivider {
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(245, 202, 161, 0.4),
-    transparent
-  );
-  margin: 0 40px;
-  flex-shrink: 0;
+.title {
+  font-size: 50px;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
 }
 
-.bottomRight {
-  font-size: 15px;
+.accent {
+  color: rgb(245, 202, 161);
+}
+
+.subTitle {
+  font-size: 17px;
   font-weight: 300;
-  color: rgba(255, 255, 255);
-  line-height: 1.8;
+  color: #C8C8C8;
+  line-height: 1.7;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.card {
+  background: #111111;
+  border: 1px solid #1A1A1A;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: #2A2A2A;
+}
+
+.card:hover .image {
+  transform: scale(1.03);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: #0A0A0A;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.imageTag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid #333;
+  color: #E8E8E8;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 8px 12px;
+  letter-spacing: 0.05em;
+}
+
+.content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.cardMeta {
+  font-size: 14px;
+  font-weight: 300;
+  color: #888;
+  line-height: 1.5;
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #1A1A1A;
+}
+
+.cardPrice {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(245, 202, 161);
+  letter-spacing: -0.01em;
+}
+
+.cardBtn {
+  background: transparent;
+  border: 1px solid #333;
+  color: #E8E8E8;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cardBtn:hover {
+  border-color: rgb(245, 202, 161);
+  color: rgb(245, 202, 161);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.moreBtn {
+  background: rgb(245, 202, 161);
+  border: none;
+  color: #0A0A0A;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 18px 36px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.moreBtn:hover {
+  background: #d4a76a;
+}
+
+@media (max-width: 1440px) {
+ .section { padding: 100px 0; }
+ .inner { gap: 56px; }
+ .title { font-size: 44px; }
+ .grid { gap: 32px; }
+ .content { padding: 28px; }
+ .cardTitle { font-size: 22px; }
+}
+
+@media (max-width: 1024px) {
+ .section { padding: 80px 0; }
+ .inner { gap: 48px; }
+ .grid { grid-template-columns: 1fr; }
+ .title { font-size: 36px; }
+ .subTitle { font-size: 16px; }
+}
 
 @media (max-width: 768px) {
-  .section {
-    padding: 64px 0;
-  }
-
-  .inner {
-    width: 100%;
-    padding: 0 24px;
-    box-sizing: border-box;
-    gap: 48px;
-  }
-
-  .title {
-    font-size: 34px;
-  }
-
-  .step:hover {
-    padding-left: 0;
-  }
-
-  .stepTitle {
-    font-size: 17px;
-  }
-
-  .bottomFact {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 28px 24px;
-    gap: 20px;
-  }
-
-  .bottomDivider {
-    width: 40px;
-    height: 1px;
-    margin: 0;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(245, 202, 161, 0.4),
-      transparent
-    );
-  }
+ .section { padding: 60px 0; }
+ .inner { gap: 40px; }
+ .header { gap: 16px; }
+ .title { font-size: 28px; }
+ .subTitle { font-size: 15px; }
+ .content { padding: 24px 20px; gap: 12px; }
+ .cardTitle { font-size: 20px; }
+ .cardMeta { font-size: 13px; }
+ .cardPrice { font-size: 18px; }
+ .cardBtn { padding: 10px 16px; font-size: 13px; }
+ .moreBtn { width: 100%; padding: 16px 24px; font-size: 15px; }
+ .imageTag { top: 16px; left: 16px; font-size: 11px; padding: 6px 10px; }
 }
